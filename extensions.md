@@ -1,5 +1,6 @@
 ---
 title:Chrome Extensions
+headline:Chrome Extensions
 ---
 
 Most of the extensions listed here have been born out of personal necessity, others have been created out of boredom or my desire to make something better.
