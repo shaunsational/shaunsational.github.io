@@ -55,4 +55,7 @@ If you have issues with this extension please report them on the [CHP Coordinate
 
 ---
 ##### Footnotes
-<b id="df1">1)</b> A **browser_action** for those familiar with chrome extensions. [↩](#a1)
+<ol>
+	<li id="df1">A **browser_action** for those familiar with chrome extensions. <a href="#a1">↩</a></li>
+	<li id="df2">The extension can only show incognito windows and their tabs if you have enabled it incognito on the extension detail page.  I cannot directly link you to this unfortunately <a href="chrome://extensions/?id=pbihheplocihoglaokfdcjadbjlhijgb">chrome://extensions/?id=pbihheplocihoglaokfdcjadbjlhijgb</a> you'll have to copy and paste that link. <a href="#a2">↩</a></li>
+</ol>
