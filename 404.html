@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>404 Page Not Found</title>
+	<style type="text/css">
+	html,body {
+		height: 100%;
+		margin: 0;
+		padding: 0;
+	}
+	body {
+		align-items: center;
+		background: #36383f;
+		display: flex;
+		justify-content: center;
+	}
+
+	a {
+		align-items: flex-end;
+		width: 450px; height: 600px;
+	}
+		a:before {
+			background: url('unicorn.png') center center no-repeat;
+			content: '';
+			display: block;
+			position: absolute;
+			width: 450px; height: 600px;
+		}
+		a:after {
+			background: url('us-404.svg') center center no-repeat;
+			content: '';
+			display: block;
+			position: absolute;
+			transition: opacity 1s;
+			width: 450px; height: 600px;
+		}
+			a:hover:after {
+				opacity: 0;
+			}
+	</style>
+</head>
+<body>
+<a href="/" title="GO HOME"></a>
+</body>
+</html>
