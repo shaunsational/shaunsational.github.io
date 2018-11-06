@@ -15,9 +15,9 @@ When Google closed their code repository down I created a Chrome extension for t
 Where it all began!  This extension creates a _small icon in the browser bar_<sup id="a1">[1](#df1)</sup> that when clicked, will generate a QR code in an overlay that contains one of the following in this order:
 1. Any selected text on the page  
 <sub><sup>(this has not been tested with large amounts of text)</sup></sub>
+1. If the current URL is a google maps URL it will attempt to get the short URL from the share link  
+<sub><sup>(this was just updated to the new google maps format, it may not work 100% all of the time yet)</sup></sub>
 1. The URL of the current page
-  1. If the current URL is a google maps URL it will attempt to get the short URL from the share link  
-	<sub><sup>(this was just updated to the new google maps format, it may not work 100% all of the time yet)</sup></sub>
 	
 If you have issues with this extension please report them on the [QR Generator GitHub issues page](https://github.com/shaunsational/chrome-ext-QR/issues)
 
