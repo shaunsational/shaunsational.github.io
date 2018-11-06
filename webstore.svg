@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   width="100%"
+   height="100%"
+   viewBox="0 0 192 192"
+   version="1.1"
+   id="svg51">
+  <metadata
+     id="metadata55">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs3">
+    <path
+       id="a"
+       d="M8 20v140c0 6.6 5.4 12 12 12h152c6.6 0 12-5.4 12-12V20H8zm108 32H76c-4.42 0-8-3.58-8-8s3.58-8 8-8h40c4.42 0 8 3.58 8 8s-3.58 8-8 8z" />
+  </defs>
+  <clipPath
+     id="b">
+    <use
+       xlink:href="#a"
+       overflow="visible"
+       id="use5" />
+  </clipPath>
+  <path
+     clip-path="url(#b)"
+     d="M8 20h176v152H8z"
+     id="path8"
+     fill="#eee" />
+  <path
+     d="M116 36H76c-4.42 0-8 3.58-8 8s3.58 8 8 8h40c4.42 0 8-3.58 8-8s-3.58-8-8-8z"
+     clip-path="url(#b)"
+     id="path10"
+     fill="#fff" />
+  <g
+     clip-path="url(#b)"
+     id="g30">
+    <defs
+       id="defs13">
+      <circle
+         id="c"
+         cx="96"
+         cy="160"
+         r="76" />
+    </defs>
+    <clipPath
+       id="d">
+      <use
+         xlink:href="#c"
+         overflow="visible"
+         id="use15" />
+    </clipPath>
+    <path
+       d="M32.07 84v93.27h34.01L96 125.45h76V84zm0 0v93.27h34.01L96 125.45h76V84z"
+       clip-path="url(#d)"
+       id="path18"
+       fill="#DB4437" />
+    <path
+       d="M20 236h72.34l33.58-33.58v-25.14l-59.84-.01L20 98.24zm0 0h72.34l33.58-33.58v-25.14l-59.84-.01L20 98.24z"
+       clip-path="url(#d)"
+       id="path20"
+       fill="#0F9D58" />
+    <path
+       d="M96 125.45l29.92 51.82L92.35 236H172V125.45zm0 0l29.92 51.82L92.35 236H172V125.45z"
+       clip-path="url(#d)"
+       id="path22"
+       fill="#FFCD40" />
+    <g
+       clip-path="url(#d)"
+       id="g28">
+      <circle
+         cx="96"
+         cy="160"
+         r="34.55"
+         id="circle24"
+         fill="#F1F1F1" />
+      <circle
+         cx="96"
+         cy="160"
+         r="27.64"
+         id="circle26"
+         fill="#4285F4" />
+    </g>
+  </g>
+  <path
+     clip-path="url(#b)"
+     d="M8 20h176v76H8z"
+     id="path32"
+     fill-opacity=".05"
+     fill="#212121" />
+  <path
+     d="M8 95h176v1H8z"
+     id="path34"
+     fill-opacity=".02"
+     fill="#212121" />
+  <path
+     d="M8 96h176v1H8z"
+     id="path36"
+     fill-opacity=".05"
+     fill="#fff" />
+  <path
+     d="M116 52H76c-4.25 0-7.72-3.32-7.97-7.5-.02.17-.03.33-.03.5 0 4.42 3.58 8 8 8h40c4.42 0 8-3.58 8-8 0-.17-.01-.33-.03-.5-.25 4.18-3.72 7.5-7.97 7.5zM8 20v1h176v-1H8z"
+     id="path38"
+     fill-opacity=".02"
+     fill="#212121" />
+  <path
+     d="M76 36h40c4.25 0 7.72 3.32 7.97 7.5.01-.17.03-.33.03-.5 0-4.42-3.58-8-8-8H76c-4.42 0-8 3.58-8 8 0 .17.01.33.03.5.25-4.18 3.72-7.5 7.97-7.5zm96 135H20c-6.6 0-12-5.4-12-12v1c0 6.6 5.4 12 12 12h152c6.6 0 12-5.4 12-12v-1c0 6.6-5.4 12-12 12z"
+     id="path40"
+     fill-opacity=".1"
+     fill="#231F20" />
+  <radialGradient
+     id="e"
+     cx="7.502"
+     cy="19.344"
+     r="227.596"
+     gradientUnits="userSpaceOnUse">
+    <stop
+       offset="0"
+       stop-color="#fff"
+       stop-opacity=".1"
+       id="stop42" />
+    <stop
+       offset="1"
+       stop-color="#fff"
+       stop-opacity="0"
+       id="stop44" />
+  </radialGradient>
+  <path
+     d="M8 20v140c0 6.6 5.4 12 12 12h152c6.6 0 12-5.4 12-12V20H8zm108 32H76c-4.42 0-8-3.58-8-8s3.58-8 8-8h40c4.42 0 8 3.58 8 8s-3.58 8-8 8z"
+     id="path47"
+     fill="url(#e)" />
+  <path
+     d="M0 0h192v192H0z"
+     id="path49"
+     fill="none" />
+</svg>
