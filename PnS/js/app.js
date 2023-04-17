@@ -1,3 +1,38 @@
+function buildProgress(section, phases, score) {
+	$(section +' .delete').remove();
+	output = '<span class="flexbreak delete"></span><div class="phased diamond delete">';
+	if (score < phases[0]) {
+		output += '<ul class="steps"><li class="current"><span>✕</span></li>' + '<li><span>✕</span>'.repeat(9) + '</ul>';
+		output += '<div>You will not make it to phase 1</div>';
+	}
+	else if (score > phases[9]) {
+		output += '<ul class="steps">' + '<li><span>✓</span>'.repeat(10) + '</ul>';
+		output += '<div>You will finish the event</div>';
+	}
+	else {
+		phase = 0;
+		output += '<ul class="steps">';
+		for(var p in phases) {
+			if (score >= phases[p]) {
+				phase = parseInt(p) + 1;
+				if (score < phases[phase]) {
+					output += '<li class="current"><span>'+ phase +'</span></li>';
+				} else {
+					output += '<li><span>✓</span></li>';
+				}
+			}
+			if (score < phases[p]) {
+				output += '<li><span>✕</span></li>';
+			}
+		}
+		output += '</ul>';
+		output += '<div class="delete">You will make it to phase '+ phase +' with '+ score +' points.</div>';
+	}
+	output += '</div>';
+
+	$(section).append(output);
+}
+
 function calcSpeeds() {
 	speeds = [];
 	total = 0
@@ -44,44 +79,19 @@ function calcSpeeds() {
 
 function diamondExpert() {
 	tiers = [864, 1728, 3024, 4320, 8640, 17280, 25920, 34560, 54000, 64800];
-	count = $('#diamondexpert input').val();
-	$('#diamondexpert .delete').remove();
+	score = $('#diamondexpert input').val();
 
-	output = '<span class="flexbreak delete"></span><div class="phased diamond delete">';
-	if (count < tiers[0]) {
-		output += '<ul class="steps"><li class="current"><span>✕</span></li>' + '<li><span>✕</span>'.repeat(9) + '</ul>';
-		output += '<div>You will not make it to phase 1</div>';
-	}
-	else if (count > tiers[9]) {
-		output += '<ul class="steps">' + '<li><span>✓</span>'.repeat(10) + '</ul>';
-		output += '<div>You will finish the event</div>';
-	}
-	else {
-		phase = 0;
-		output += '<ul class="steps">';
-		for(var t in tiers) {
-			if (count > tiers[t]) {
-				phase = parseInt(t) + 1;
-				if (count < tiers[phase]) {
-					output += '<li class="current"><span>'+ phase +'</span></li>';
-				} else {
-					output += '<li><span>✓</span></li>';
-				}
-			}
-			if (count < tiers[t]) {
-				output += '<li><span>✕</span></li>';
-			}
-		}
-		output += '</ul>';
-		output += '<div class="delete">You will make it to phase '+ phase +'</div>';
-	}
-	output += '</div>';
-
-	$('#diamondexpert').append(output);
+	buildProgress('#diamondexpert', tiers, score);
 }
 
 function nanoweapon() {
 	tiers = [15000, 30000, 55000, 75000, 150000, 300000, 450000, 625000, 1000000, 1250000];
+	score = 0;
+	$('#nanoweapon input').each(function(){
+		score += parseInt($(this).val() * $(this).data('multiplier'));
+	});
+
+	buildProgress('#nanoweapon', tiers, score);
 }
 
 $(function () {

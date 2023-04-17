@@ -19,10 +19,24 @@
 
 		<main class="container">
 			<section class="content active" id="diamondexpert" data-callback="diamondExpert()">
-				<input type="tel" placeholder="How many diamonds do you have? (type the full number, ex: 20000 instead of 20k)" />
+				<p>Diamonds spent</p>
+				<input type="tel" placeholder="How many diamonds do you have to spend? (type the full number, ex: 20000, not &#34;20k&#34;)" />
 			</section>
 
-			<section class="content" id="nanoweapon">Nanoweapon</section>
+			<section class="content" id="nanoweapon" data-callback="nanoweapon()">
+				<p>Weapons crafted</p>
+				<input type="tel" class="common" placeholder="Common weapons" data-multiplier="20000">
+				<input type="tel" class="uncommon" placeholder="Uncommon weapons" data-multiplier="50000">
+				<input type="tel" class="rare" placeholder="Rare weapons" data-multiplier="100000">
+				<input type="tel" class="epic" placeholder="Epic weapons" data-multiplier="200000">
+				<input type="tel" class="apex" placeholder="Apex weapons" data-multiplier="500000">
+
+				<p>Boxes</p>
+				<input type="tel" placeholder="Nanoweapon Boxes" data-multiplier="9000" />
+				<input type="tel" placeholder="Modification Choice Boxes" data-multiplier="30000" />
+
+				<p class="greyed"><i>Because these boxes are random, and some choices don't give any points towards the event, it's hard to say whether or not you WILL hit the event.  I tried to make a conservative assumption based on a luck of the draw because the game likes to screw everyone over.</i></p>
+			</section>
 
 			<section class="content" id="speedups" data-callback="calcSpeeds()">
 				<section>General</section>
@@ -44,7 +58,7 @@
 					<input type="tel" placeholder="15 Hours" data-multiplier="900" />
 					<input type="tel" placeholder="24 Hours" data-multiplier="1440" />
 				</div>
-				<div class="research purple">
+				<div class="research blue">
 					<input type="tel" placeholder="5 Mins" data-multiplier="5" />
 					<input type="tel" placeholder="10 Mins" data-multiplier="10" />
 					<input type="tel" placeholder="15 Mins" data-multiplier="15" />
@@ -55,7 +69,7 @@
 					<input type="tel" placeholder="15 Hours" data-multiplier="900" />
 					<input type="tel" placeholder="24 Hours" data-multiplier="1440" />
 				</div>
-				<div class="healing red">
+				<div class="healing purple">
 					<input type="tel" placeholder="5 Mins" data-multiplier="5" />
 					<input type="tel" placeholder="10 Mins" data-multiplier="10" />
 					<input type="tel" placeholder="15 Mins" data-multiplier="15" />
@@ -77,7 +91,7 @@
 					<input type="tel" placeholder="15 Hours" data-multiplier="900" />
 					<input type="tel" placeholder="24 Hours" data-multiplier="1440" />
 				</div>
-				<div class="build blue">
+				<div class="build red">
 					<input type="tel" placeholder="5 Mins" data-multiplier="5" />
 					<input type="tel" placeholder="10 Mins" data-multiplier="10" />
 					<input type="tel" placeholder="15 Mins" data-multiplier="15" />

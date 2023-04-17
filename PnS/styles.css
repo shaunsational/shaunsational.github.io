@@ -53,6 +53,14 @@ nav a.active {
 	position: relative;
 }
 
+section p {
+	margin: 1em 0 .25em 0;
+}
+
+section p:first-child {
+	margin-top: 0;
+}
+
 .greyed {
 	font-weight: normal;
 }
@@ -72,6 +80,8 @@ nav a.active {
 }
 
 .container .content input {
+	margin:  2px 0;
+	padding: 3px 5px;
 	width: 100%;
 }
 
@@ -81,33 +91,20 @@ nav a.active {
 	margin: 5px 10px;
 	align-self: flex-end;
 }
+
 .container .content#speedups.active div.green {
 	color: #393;
 }
+input.common,
 .container .content#speedups.active div.green input {
 	background: #CFC;
 	border: 1px solid #9C9;
 	color: #393;
 }
-.container .content#speedups.active div.red {
-	color: #933;
-}
-.container .content#speedups.active div.red input {
-	background: #FCC;
-	border: 1px solid #C99;
-	color: #933;
-}
-.container .content#speedups.active div.yellow {
-	color: #993;
-}
-.container .content#speedups.active div.yellow input {
-	background: #FFC;
-	border: 1px solid #CC9;
-	color: #993;
-}
 .container .content#speedups.active div.blue {
 	color: #339;
 }
+input.uncommon,
 .container .content#speedups.active div.blue input {
 	background: #CCF;
 	border: 1px solid #99C;
@@ -116,120 +113,139 @@ nav a.active {
 .container .content#speedups.active div.purple {
 	color: #939;
 }
+input.rare,
 .container .content#speedups.active div.purple input {
 	background: #FCF;
 	border: 1px solid #C9C;
 	color: #939;
 }
+.container .content#speedups.active div.yellow {
+	color: #993;
+}
+input.epic,
+.container .content#speedups.active div.yellow input {
+	background: #FFC;
+	border: 1px solid #CC9;
+	color: #993;
+}
+.container .content#speedups.active div.red {
+	color: #933;
+}
+input.apex,
+.container .content#speedups.active div.red input {
+	background: #FCC;
+	border: 1px solid #C99;
+	color: #933;
+}
 
 footer {
-	cursor: help;
-	text-align: center;
-}
-footer .snark {
-	font: normal .8em sans-serif;
-	opacity:  0;
-	position: relative;
-	top: -10px;
-	transition: opacity .5s bounce;
-}
-footer:hover .snark {
-	opacity: 1;
-}
+		cursor: help;
+		text-align: center;
+	}
+	footer .snark {
+		font: normal .8em sans-serif;
+		opacity:  0;
+		position: relative;
+		top: -10px;
+		transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+	footer:hover .snark {
+		opacity: 1;
+	}
 
 .phased {
-	width: 100%;
-}
+		width: 100%;
+	}
 
-.phased .steps {
-	display: flex;
-	list-style: none;
-	margin-left: 1.25em;
-	padding: 0;
-}
+	.phased .steps {
+		display: flex;
+		list-style: none;
+		margin-left: 1.25em;
+		padding: 0;
+	}
 
-.phased .steps > li {
-	color: #FFF;
-	flex: 2;
-	line-height: 36px;
-	position: relative;
-}
+	.phased .steps > li {
+		color: #FFF;
+		flex: 2;
+		line-height: 36px;
+		position: relative;
+	}
 
-.phased .steps > li span {
-	display: block;
-	width: 36px;
-	text-align: center;
-}
+	.phased .steps > li span {
+		display: block;
+		width: 36px;
+		text-align: center;
+	}
 
-.phased .steps > li:before {
-	box-sizing: border-box;
-	content: "";
-	display: block;
-	background-color: var(--phased);
-	width: 36px;
-	height: 36px;
-	line-height: 36px;
-	text-align: center;
-	font-weight: bold;
-	border: 2px solid var(--phased);
-	border-radius: 50%;
-	position: absolute;
-	z-index: -5;
-	left: 0;
-}
+	.phased .steps > li:before {
+		box-sizing: border-box;
+		content: "";
+		display: block;
+		background-color: var(--phased);
+		width: 36px;
+		height: 36px;
+		line-height: 36px;
+		text-align: center;
+		font-weight: bold;
+		border: 2px solid var(--phased);
+		border-radius: 50%;
+		position: absolute;
+		z-index: -5;
+		left: 0;
+	}
 
-.phased .steps > li:after {
-	content: "";
-	height: 4px;
-	width: 100%;
-	background-color: var(--phased);
-	position: absolute;
-	top: 16px;
-	left: 0;
-	z-index: -100;
-}
+	.phased .steps > li:after {
+		content: "";
+		height: 4px;
+		width: 100%;
+		background-color: var(--phased);
+		position: absolute;
+		top: 16px;
+		left: 0;
+		z-index: -100;
+	}
 
-.phased .steps > li.current {
-	color: var(--phased);
-}
+	.phased .steps > li.current {
+		color: var(--phased);
+	}
 
-.phased .steps > li.current ~ li:after,
-.phased .steps > li.current:after {
-	background-color: #EDEDED;
-}
+	.phased .steps > li.current ~ li:after,
+	.phased .steps > li.current:after {
+		background-color: #EDEDED;
+	}
 
-.phased .steps > li.current:before {
-	background-color: #FFF;
-	border-color: var(--phased);
-}
+	.phased .steps > li.current:before {
+		background-color: #FFF;
+		border-color: var(--phased);
+	}
 
-.phased .steps > li.current ~ li {
-	color: #808080;
-}
+	.phased .steps > li.current ~ li {
+		color: #808080;
+	}
 
-.phased .steps > li.current ~ li:before {
-	background-color: #EDEDED;
-	border-color: #DDD;
-}
+	.phased .steps > li.current ~ li:before {
+		background-color: #EDEDED;
+		border-color: #DDD;
+	}
 
-.phased .steps > li:last-child {
-	flex: 1;
-	width: 36px;
-}
+	.phased .steps > li:last-child {
+		flex: 1;
+		width: 36px;
+	}
 
-.phased .steps > li:last-child:after {
-	display: none;
-}
+	.phased .steps > li:last-child:after {
+		display: none;
+	}
 
-.phased.square .steps > li:before {
-	border-radius: 0;
-}
+	.phased.square .steps > li:before {
+		border-radius: 0;
+	}
 
-.phased.diamond .steps > li:before {;
-	border-radius: 0;
-    height: 30px;
-    line-height: 30px;
-    margin:  3px 0 0 3px;
-	rotate: 45deg;
-    width: 30px;
-}
+	.phased.diamond .steps > li:before {;
+		border-radius: 0;
+	    height: 30px;
+	    line-height: 30px;
+	    margin:  3px 0 0 3px;
+		rotate: 45deg;
+	    width: 30px;
+	}
