@@ -79,6 +79,7 @@ nav a.active {
 .container .content#speedups.active > section {
 	flex: 1;
 	margin: 5px 10px;
+	align-self: flex-end;
 }
 .container .content#speedups.active div.green {
 	color: #393;
