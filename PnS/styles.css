@@ -1,0 +1,234 @@
+:root {
+	--phased: #3c8d0d;
+}
+
+body {
+	font: bold 14px sans-serif;
+	height: 100%;
+	margin: 0;
+	padding: 10px;
+}
+
+#splash {
+	display: none;
+	background: url('https://mma.prnewswire.com/media/1424687/37GAMES_Puzzles_And_Survival.jpg?p=640') top center no-repeat;
+	background-size: cover;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+#flex {
+	display: flex;
+}
+.flexbreak {
+	display: block;
+	flex-basis: 100% !important;
+	height: 0;
+}
+
+nav {
+	flex: 1;
+	position: relative;
+}
+nav a {
+	background-color: #666;
+	color: #CCC;
+	display: block;
+	padding: 5px 0 5px 5px;
+	text-decoration: none;
+	transition: background-color 0.5s, color 0.5s;
+}
+nav a:hover {
+	background-color: #999;
+	color: #FFF;
+}
+nav a.active {
+	background-color: #FFF;
+	border: 1px solid #999;
+	border-width: 1px 0 1px 1px;
+	color: #000;
+	position: relative;
+}
+
+.greyed {
+	font-weight: normal;
+}
+
+.container {
+	border: 1px solid #999;
+	flex: 7;
+	margin-left: -1px;
+	padding: 10px;
+}
+.container .content {
+	display: none;
+}
+.container .content.active {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.container .content input {
+	width: 100%;
+}
+
+.container .content#speedups.active > div,
+.container .content#speedups.active > section {
+	flex: 1;
+	margin: 5px 10px;
+}
+.container .content#speedups.active div.green {
+	color: #393;
+}
+.container .content#speedups.active div.green input {
+	background: #CFC;
+	border: 1px solid #9C9;
+	color: #393;
+}
+.container .content#speedups.active div.red {
+	color: #933;
+}
+.container .content#speedups.active div.red input {
+	background: #FCC;
+	border: 1px solid #C99;
+	color: #933;
+}
+.container .content#speedups.active div.yellow {
+	color: #993;
+}
+.container .content#speedups.active div.yellow input {
+	background: #FFC;
+	border: 1px solid #CC9;
+	color: #993;
+}
+.container .content#speedups.active div.blue {
+	color: #339;
+}
+.container .content#speedups.active div.blue input {
+	background: #CCF;
+	border: 1px solid #99C;
+	color: #339;
+}
+.container .content#speedups.active div.purple {
+	color: #939;
+}
+.container .content#speedups.active div.purple input {
+	background: #FCF;
+	border: 1px solid #C9C;
+	color: #939;
+}
+
+footer {
+	cursor: help;
+	text-align: center;
+}
+footer .snark {
+	font: normal .8em sans-serif;
+	opacity:  0;
+	position: relative;
+	top: -10px;
+	transition: opacity .5s bounce;
+}
+footer:hover .snark {
+	opacity: 1;
+}
+
+.phased {
+	width: 100%;
+}
+
+.phased .steps {
+	display: flex;
+	list-style: none;
+	margin-left: 1.25em;
+	padding: 0;
+}
+
+.phased .steps > li {
+	color: #FFF;
+	flex: 2;
+	line-height: 36px;
+	position: relative;
+}
+
+.phased .steps > li span {
+	display: block;
+	width: 36px;
+	text-align: center;
+}
+
+.phased .steps > li:before {
+	box-sizing: border-box;
+	content: "";
+	display: block;
+	background-color: var(--phased);
+	width: 36px;
+	height: 36px;
+	line-height: 36px;
+	text-align: center;
+	font-weight: bold;
+	border: 2px solid var(--phased);
+	border-radius: 50%;
+	position: absolute;
+	z-index: -5;
+	left: 0;
+}
+
+.phased .steps > li:after {
+	content: "";
+	height: 4px;
+	width: 100%;
+	background-color: var(--phased);
+	position: absolute;
+	top: 16px;
+	left: 0;
+	z-index: -100;
+}
+
+.phased .steps > li.current {
+	color: var(--phased);
+}
+
+.phased .steps > li.current ~ li:after,
+.phased .steps > li.current:after {
+	background-color: #EDEDED;
+}
+
+.phased .steps > li.current:before {
+	background-color: #FFF;
+	border-color: var(--phased);
+}
+
+.phased .steps > li.current ~ li {
+	color: #808080;
+}
+
+.phased .steps > li.current ~ li:before {
+	background-color: #EDEDED;
+	border-color: #DDD;
+}
+
+.phased .steps > li:last-child {
+	flex: 1;
+	width: 36px;
+}
+
+.phased .steps > li:last-child:after {
+	display: none;
+}
+
+.phased.square .steps > li:before {
+	border-radius: 0;
+}
+
+.phased.diamond .steps > li:before {;
+	border-radius: 0;
+    height: 30px;
+    line-height: 30px;
+    margin:  3px 0 0 3px;
+	rotate: 45deg;
+    width: 30px;
+}

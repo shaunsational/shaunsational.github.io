@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>PnS - Can I Hit?</title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+	<div id="splash"></div>
+	<div id="flex">
+		<nav>
+			<div class="tabs">
+				<a href="#diamondexpert" class="tab active">Diamond Expert</a>
+				<a href="#nanoweapon" class="tab">Nanoweapon</a>
+				<a href="#speedups" class="tab">Speedups</a>
+			</div>
+		</nav>
+
+		<main class="container">
+			<section class="content active" id="diamondexpert" data-callback="diamondExpert()">
+				<input type="tel" placeholder="How many diamonds do you have? (type the full number, ex: 20000 instead of 20k)" />
+			</section>
+
+			<section class="content" id="nanoweapon">Nanoweapon</section>
+
+			<section class="content" id="speedups" data-callback="calcSpeeds()">
+				<section>General</section>
+				<section>Research</section>
+				<section>Healing</section>
+				<section>Training</section>
+				<section>Building</section>
+				<span class="flexbreak"></span>
+				<div class="general green">
+					<input type="tel" placeholder="1 Min" data-multiplier="1" />
+					<input type="tel" placeholder="3 Mins" data-multiplier="3" />
+					<input type="tel" placeholder="5 Mins" data-multiplier="5" />
+					<input type="tel" placeholder="10 Mins" data-multiplier="10" />
+					<input type="tel" placeholder="15 Mins" data-multiplier="15" />
+					<input type="tel" placeholder="30 Mins" data-multiplier="30" />
+					<input type="tel" placeholder="1 Hour" data-multiplier="60" />
+					<input type="tel" placeholder="3 Hours" data-multiplier="180" />
+					<input type="tel" placeholder="8 Hours" data-multiplier="480" />
+					<input type="tel" placeholder="15 Hours" data-multiplier="900" />
+					<input type="tel" placeholder="24 Hours" data-multiplier="1440" />
+				</div>
+				<div class="research purple">
+					<input type="tel" placeholder="5 Mins" data-multiplier="5" />
+					<input type="tel" placeholder="10 Mins" data-multiplier="10" />
+					<input type="tel" placeholder="15 Mins" data-multiplier="15" />
+					<input type="tel" placeholder="30 Mins" data-multiplier="30" />
+					<input type="tel" placeholder="1 Hour" data-multiplier="60" />
+					<input type="tel" placeholder="3 Hours" data-multiplier="180" />
+					<input type="tel" placeholder="8 Hours" data-multiplier="480" />
+					<input type="tel" placeholder="15 Hours" data-multiplier="900" />
+					<input type="tel" placeholder="24 Hours" data-multiplier="1440" />
+				</div>
+				<div class="healing red">
+					<input type="tel" placeholder="5 Mins" data-multiplier="5" />
+					<input type="tel" placeholder="10 Mins" data-multiplier="10" />
+					<input type="tel" placeholder="15 Mins" data-multiplier="15" />
+					<input type="tel" placeholder="30 Mins" data-multiplier="30" />
+					<input type="tel" placeholder="1 Hour" data-multiplier="60" />
+					<input type="tel" placeholder="3 Hours" data-multiplier="180" />
+					<input type="tel" placeholder="8 Hours" data-multiplier="480" />
+					<input type="tel" placeholder="15 Hours" data-multiplier="900" />
+					<input type="tel" placeholder="24 Hours" data-multiplier="1440" />
+				</div>
+				<div class="training yellow">
+					<input type="tel" placeholder="5 Mins" data-multiplier="5" />
+					<input type="tel" placeholder="10 Mins" data-multiplier="10" />
+					<input type="tel" placeholder="15 Mins" data-multiplier="15" />
+					<input type="tel" placeholder="30 Mins" data-multiplier="30" />
+					<input type="tel" placeholder="1 Hour" data-multiplier="60" />
+					<input type="tel" placeholder="3 Hours" data-multiplier="180" />
+					<input type="tel" placeholder="8 Hours" data-multiplier="480" />
+					<input type="tel" placeholder="15 Hours" data-multiplier="900" />
+					<input type="tel" placeholder="24 Hours" data-multiplier="1440" />
+				</div>
+				<div class="build blue">
+					<input type="tel" placeholder="5 Mins" data-multiplier="5" />
+					<input type="tel" placeholder="10 Mins" data-multiplier="10" />
+					<input type="tel" placeholder="15 Mins" data-multiplier="15" />
+					<input type="tel" placeholder="30 Mins" data-multiplier="30" />
+					<input type="tel" placeholder="1 Hour" data-multiplier="60" />
+					<input type="tel" placeholder="3 Hours" data-multiplier="180" />
+					<input type="tel" placeholder="8 Hours" data-multiplier="480" />
+					<input type="tel" placeholder="15 Hours" data-multiplier="900" />
+					<input type="tel" placeholder="24 Hours" data-multiplier="1440" />
+				</div>
+			</section>
+	    </main>
+  </div>
+
+	<footer>
+		<p>Copyright &copy; 2023</p>
+		<span class="snark">Seriously though, why are you still playing this game?</span>
+	</footer>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+</body>
+</html>
