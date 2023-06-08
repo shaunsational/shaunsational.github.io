@@ -53,6 +53,13 @@ nav a.active {
 	position: relative;
 }
 
+ul.list-points {
+	list-style-type: disclosure-closed;
+}
+ul.list-points li {
+	margin: .75em 0 0 0;
+}
+
 section p {
 	margin: 1em 0 .25em 0;
 }
@@ -75,8 +82,7 @@ section p:first-child {
 	display: none;
 }
 .container .content.active {
-	display: flex;
-	flex-wrap: wrap;
+	display: block;
 }
 
 .container .content input {
@@ -85,54 +91,59 @@ section p:first-child {
 	width: 100%;
 }
 
-.container .content#speedups.active > div,
-.container .content#speedups.active > section {
+.flex {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.container .content#speedups.active .flex > div,
+.container .content#speedups.active .flex > section {
 	flex: 1;
 	margin: 5px 10px;
 	align-self: flex-end;
 }
 
-.container .content#speedups.active div.green {
+.container .content#speedups.active .flex div.green {
 	color: #393;
 }
 input.common,
-.container .content#speedups.active div.green input {
+.container .content#speedups.active .flex div.green input {
 	background: #CFC;
 	border: 1px solid #9C9;
 	color: #393;
 }
-.container .content#speedups.active div.blue {
+.container .content#speedups.active .flex div.blue {
 	color: #339;
 }
 input.uncommon,
-.container .content#speedups.active div.blue input {
+.container .content#speedups.active .flex div.blue input {
 	background: #CCF;
 	border: 1px solid #99C;
 	color: #339;
 }
-.container .content#speedups.active div.purple {
+.container .content#speedups.active .flex div.purple {
 	color: #939;
 }
 input.rare,
-.container .content#speedups.active div.purple input {
+.container .content#speedups.active .flex div.purple input {
 	background: #FCF;
 	border: 1px solid #C9C;
 	color: #939;
 }
-.container .content#speedups.active div.yellow {
+.container .content#speedups.active .flex div.yellow {
 	color: #993;
 }
 input.epic,
-.container .content#speedups.active div.yellow input {
+.container .content#speedups.active .flex div.yellow input {
 	background: #FFC;
 	border: 1px solid #CC9;
 	color: #993;
 }
-.container .content#speedups.active div.red {
+.container .content#speedups.active .flex div.red {
 	color: #933;
 }
 input.apex,
-.container .content#speedups.active div.red input {
+.container .content#speedups.active .flex div.red input {
 	background: #FCC;
 	border: 1px solid #C99;
 	color: #933;
@@ -143,7 +154,8 @@ footer {
 		text-align: center;
 	}
 	footer .snark {
-		font: normal .8em sans-serif;
+		font: normal .85em sans-serif;
+		font-variant: all-small-caps;
 		opacity:  0;
 		position: relative;
 		top: -10px;

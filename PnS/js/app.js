@@ -94,6 +94,20 @@ function nanoweapon() {
 	buildProgress('#nanoweapon', tiers, score);
 }
 
+function novamod() {
+	tiers = [12960, 25920, 47520, 64800, 162000, 324000, 486000, 675000, 1080000, 1350000];
+	score = 0;
+	$('#novamod input').each(function(){
+		score += parseInt($(this).val() * $(this).data('multiplier'));
+	});
+
+	buildProgress('#novamod', tiers, score);
+}
+
+function ace5() {
+	tiers = [15000, 30000, 60000, 120000, 300000, 600000];
+}
+
 $(function () {
 	window.delay = null;
 	$(".tab").click(function (e) {
