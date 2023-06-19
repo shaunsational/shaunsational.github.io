@@ -31,16 +31,27 @@ body {
 
 nav {
 	flex: 1;
+	min-width: 150px;
 	position: relative;
 }
+nav dl {
+	margin: 0;
+	min-height: 26px;
+	overflow-y: hidden;
+}
+nav dt,
 nav a {
 	background-color: #666;
 	color: #CCC;
+	cursor: pointer;
 	display: block;
 	padding: 5px 0 5px 5px;
+	position: relative;
 	text-decoration: none;
 	transition: background-color 0.5s, color 0.5s;
+	z-index: 1;
 }
+nav dt:hover,
 nav a:hover {
 	background-color: #999;
 	color: #FFF;
@@ -51,6 +62,18 @@ nav a.active {
 	border-width: 1px 0 1px 1px;
 	color: #000;
 	position: relative;
+}
+nav dd {
+	font-size: small;
+	font-weight: normal;
+	position: relative;
+	margin: 0;
+	margin-top: -500px;
+	transition: margin .3s .3s;
+	z-index: 0;
+}
+nav dl.expand dd {
+	margin-top: 0px;
 }
 
 ul.list-points {

@@ -14,31 +14,60 @@
 				<a href="#diamondexpert" class="tab active">Diamond Expert</a>
 				<a href="#nanoweapon" class="tab">Nanoweapon</a>
 				<a href="#speedups" class="tab">Speedups</a>
+				<a href="#heroupgrade" class="tab">Hero Upgrade</a>
 				<a href="#novamod" class="tab">Nova & Module</a>
+				<a href="#bioenhancer" class="tab">Bioenhancer</a>
 
-				<a href="#ace5" class="tab">Ace (5/7) Improve Might</a>
+				<dl class="tab">
+					<dt>Ace Commander</dt>
+					<dd>
+						<a href="#ace1" class="tab">Ace (1/7) Gather??</a>
+						<a href="#ace2" class="tab">Ace (2/7) </a>
+						<a href="#ace3" class="tab">Ace (3/7) </a>
+						<a href="#ace4" class="tab">Ace (4/7) </a>
+						<a href="#ace5" class="tab">Ace (5/7) Improve Might</a>
+						<a href="#ace6" class="tab">Ace (6/7) </a>
+						<a href="#ace7" class="tab">Ace (7/7) </a>
+					</dd>
+				</dl>
+
+				<dl class="tab">
+					<dt>Break Loose</dt>
+					<dd>
+						<a href="#breakloosebuild" class="tab">Build / Research / Train</a>
+						<a href="#breakloosetrain" class="tab">Training</a>
+						<a href="#breakloosediamond" class="tab">Diamond</a>
+						<a href="#breaklooseweapon" class="tab">Nanoweapon</a>
+					</dd>
+				</dl>
+
+				<a href="#talents" class="tab">Talents</a>
 			</div>
 		</nav>
 
 		<main class="container">
-			<section class="content active" id="diamondexpert" data-callback="diamondExpert()">
-				<p>Diamonds spent</p>
-				<input type="tel" placeholder="How many diamonds do you have to spend? (type the full number, ex: 20000, not &#34;20k&#34;)" />
+			<section class="content active" id="diamondexpert" data-callback="tabulateScore('diamondexpert')">
+				<div class="flex">
+					<p>Diamonds available</p>
+					<input type="tel" placeholder="How many diamonds do you have to spend? (type the full number, ex: 20000, not &#34;20k&#34;)" data-multiplier="1" />
+				</div>
 			</section>
 
 			<section class="content" id="nanoweapon" data-callback="nanoweapon()">
-				<p>Weapons crafted</p>
-				<input type="tel" class="common" placeholder="Common weapons" data-multiplier="20000">
-				<input type="tel" class="uncommon" placeholder="Uncommon weapons" data-multiplier="50000">
-				<input type="tel" class="rare" placeholder="Rare weapons" data-multiplier="100000">
-				<input type="tel" class="epic" placeholder="Epic weapons" data-multiplier="200000">
-				<input type="tel" class="apex" placeholder="Apex weapons" data-multiplier="500000">
+				<div class="flex">
+					<p>Weapons crafted</p>
+					<input type="tel" class="common" placeholder="Common weapons" data-multiplier="20000">
+					<input type="tel" class="uncommon" placeholder="Uncommon weapons" data-multiplier="50000">
+					<input type="tel" class="rare" placeholder="Rare weapons" data-multiplier="100000">
+					<input type="tel" class="epic" placeholder="Epic weapons" data-multiplier="200000">
+					<input type="tel" class="apex" placeholder="Apex weapons" data-multiplier="500000">
 
-				<p>Boxes</p>
-				<input type="tel" placeholder="Nanoweapon Boxes" data-multiplier="9000" />
-				<input type="tel" placeholder="Modification Choice Boxes" data-multiplier="30000" />
+					<p>Boxes</p>
+					<input type="tel" placeholder="Nanoweapon Boxes" data-multiplier="9000" />
+					<input type="tel" placeholder="Modification Choice Boxes" data-multiplier="30000" />
 
-				<p class="greyed"><i>Because these boxes are random, and some choices don't give any points towards the event, it's hard to say whether or not you WILL hit the event.  I tried to make a conservative assumption based on a luck of the draw because the game likes to screw everyone over.</i></p>
+					<p class="greyed"><i>Because these boxes are random, and some choices don't give any points towards the event, it's hard to say whether or not you WILL hit the event.  I tried to make a conservative assumption based on a luck of the draw because the game likes to screw everyone over.</i></p>
+				</div>
 			</section>
 
 			<section class="content" id="speedups" data-callback="calcSpeeds()">
@@ -110,55 +139,154 @@
 			</section>
 
 			<section class="content" id="novamod" data-callback="novamod()">
-				<p>Nova Points</p>
-				<input type="tel" placeholder="500 Nova Economy" data-multiplier="100">
-				<input type="tel" placeholder="2K Nova Economy" data-multiplier="400">
-				<input type="tel" placeholder="10K Nova Economy" data-multiplier="2000">
+				<div class="flex">
+					<p>Nova Points</p>
+					<input type="tel" placeholder="500 Nova Economy" data-multiplier="100">
+					<input type="tel" placeholder="2K Nova Economy" data-multiplier="400">
+					<input type="tel" placeholder="10K Nova Economy" data-multiplier="2000">
 
-				<input type="tel" placeholder="500 Nova Military" data-multiplier="100">
-				<input type="tel" placeholder="2K Nova Military" data-multiplier="400">
-				<input type="tel" placeholder="10K Nova Military" data-multiplier="2000">
+					<input type="tel" placeholder="500 Nova Military" data-multiplier="100">
+					<input type="tel" placeholder="2K Nova Military" data-multiplier="400">
+					<input type="tel" placeholder="10K Nova Military" data-multiplier="2000">
+				</div>
+			</section>
+
+			<section class="content" id="bioenhancer" data-callback="bioenhancer()">
+				<div class="flex">
+					<p>Bioenhancers</p>
+					<input type="tel" class="common" placeholder="Basic Bioenhancer" data-multiplier="20000">
+					<input type="tel" class="uncommon" placeholder="Intermediate Bioenhancer" data-multiplier="100000">
+					<input type="tel" class="rare" placeholder="Advanced Bioenhancer" data-multiplier="400000">
+					<input type="tel" class="epic" placeholder="Super Bioenhancer" data-multiplier="1000000">
+					<input type="tel" class="apex" placeholder="Apex Bioenhancer" data-multiplier="2000000">
+
+					<p>Bioenhancer Shards</p>
+					<input type="tel" class="common" placeholder="Basic Shard" data-multiplier="200">
+					<input type="tel" class="uncommon" placeholder="Intermediate Shard" data-multiplier="1000">
+					<input type="tel" class="rare" placeholder="Advanced Shard" data-multiplier="4000">
+					<input type="tel" class="epic" placeholder="Super Shard" data-multiplier="10000">
+					<input type="tel" class="apex" placeholder="Apex Shard" data-multiplier="20000">
+
+					<p>Organ Stimulant</p>
+					<input type="tel" class="common" placeholder="Organ Stimulant" data-multiplier="100">
+				</div>
 			</section>
 
 			<section class="content" id="ace1" data-callback="ace5()">
-				<p>Ace Commander (Day 1) Gather</p>
-				<p>What are you trying to calculate??? GO GATHER!!!</p>
-				<p>But for next time, to maximize points:</p>
-				<ul class="list-points">
-					<li>Try to plan your gathering so that you have all of your troops coming back from gathering at reset, preferably one full load from the alliance resource</li>
-					<li>Use your 'Swift Gathering' talent. If you don't have this, why not?</li>
-					<li>Talk to your alliance, have R5/R4 scrap the alliance resource a few minutes before reset at the end of this day so everyone gets the most they can out of it before the day ends, if they don't want to, make sure you pull yours out to get your points</li>
+				<div class="flex">
+					<p>Ace Commander (Day 1) Gather</p>
+					<p>What are you trying to calculate??? GO GATHER!!!</p>
+					<p>But for next time, to maximize points:</p>
+					<ul class="list-points">
+						<li>Try to plan your gathering so that you have all of your troops coming back from gathering at reset, preferably one full load from the alliance resource</li>
+						<li>Use your 'Swift Gathering' talent. If you don't have this, why not?</li>
+						<li>Talk to your alliance, have R5/R4 scrap the alliance resource a few minutes before reset at the end of this day so everyone gets the most they can out of it before the day ends, if they don't want to, make sure you pull yours out to get your points</li>
+					</ul>
+				</div>
 			</section>
 
 			<section class="content" id="ace5" data-callback="ace5()">
-				<p>Ace Commander (Day 5) Improve Might</p>
-				Get Enhance Material - 1* 100; 2* 500; 3* 2,000; 4* 5,000; 5* 20,000
-				</br>
-				Get Promote Material - Promoter 1,000; Promoter II 5,000; Promoter III 40,000
+				<div class="flex">
+					<p>Ace Commander (Day 5) Improve Might</p>
+					Get Enhance Material - 1* 100; 2* 500; 3* 2,000; 4* 5,000; 5* 20,000
+					</br>
+					Get Promote Material - Promoter 1,000; Promoter II 5,000; Promoter III 40,000
+				</div>
+			</section>
+
+			<section class="content" id="breaklooseweapon" data-callback="breaklooseweapon()">
+				<div class="flex">
+					<p>Break Loose</p>
+					<p>Nanoweapon Material</p>
+					<input type="tel" placeholder="Weapon Promoter" data-multiplier="1000">
+					<input type="tel" placeholder="Weapon Promoter II" data-multiplier="5000">
+					<input type="tel" placeholder="1* Weapon Enhance" data-multiplier="100">
+					<input type="tel" placeholder="2* Weapon Enhance" data-multiplier="500">
+					<input type="tel" placeholder="3* Weapon Enhance" data-multiplier="2000">
+					<input type="tel" placeholder="4* Weapon Enhance" data-multiplier="5000">
+					<input type="tel" placeholder="5* Weapon Enhance" data-multiplier="20000">
+					<input type="tel" placeholder="Nanoweapon Modifier" data-multiplier="3000">
+
+					<p>Craft Nanoweapon</p>
+					<input type="tel" class="common" placeholder="Common Weapon" data-multiplier="20000">
+					<input type="tel" class="uncommon" placeholder="Uncommon Weapon" data-multiplier="50000">
+					<input type="tel" class="rare" placeholder="Rare Weapon" data-multiplier="100000">
+					<input type="tel" class="epic" placeholder="Epic Weapon" data-multiplier="200000">
+					<input type="tel" class="apex" placeholder="Apex Weapon" data-multiplier="500000">
+				</div>
+			</section>
+
+			<section class="content" id="breakloosetrain" data-callback="tabulateScore('breakloosetrain')">
+				<div class="flex">
+					<p>Break Loose</p>
+					<p>Train Troops</p>
+					<input type="tel" placeholder="T1" data-multiplier="5">
+					<input type="tel" placeholder="T2" data-multiplier="10">
+					<input type="tel" placeholder="T3" data-multiplier="15">
+					<input type="tel" placeholder="T4" data-multiplier="22">
+					<input type="tel" placeholder="T5" data-multiplier="30">
+					<input type="tel" placeholder="T6" data-multiplier="40">
+					<input type="tel" placeholder="T7" data-multiplier="55">
+					<input type="tel" placeholder="T8" data-multiplier="70">
+					<input type="tel" placeholder="T9" data-multiplier="85">
+					<input type="tel" placeholder="T10" data-multiplier="110">
+					<input type="tel" placeholder="T11" data-multiplier="150">
+					<input type="tel" placeholder="T12" data-multiplier="200">
+
+					<p>Training Speedup</p>
+					<input type="tel" placeholder="1 Minute Speedup" data-multiplier="15">
+				</div>
+			</section>
+
+			<section class="content" id="heroupgrade" data-callback="tabulateScore('heroupgrade')">
+				<div class="flex">
+					<p>Get Hero Frags</p>
+					<input type="tel" placeholder="2* Hero Frag" data-multiplier="500">
+					<input type="tel" placeholder="3* Hero Frag" data-multiplier="2000">
+					<input type="tel" placeholder="4* Hero Frag" data-multiplier="8000">
+					<input type="tel" placeholder="5* Hero Frag" data-multiplier="20000">
+
+					<p class="greyed"><i>Remember to include frags that can easily be acquired: McCarty from rare earth, Eve from ruins, Levina from clean water, .</i></p>
+					</br>
+					<input type="tel" disabled="disabled" placeholder="floor(Rare Earth / 350,000) * 20000 for McCarty">
+					<input type="tel" disabled="disabled" placeholder="floor(Clean Water / 350,000) * 20000 for Levina">
+				</div>
+			</section>
+
+			<section class="content" id="breakloosediamond" data-callback="tabulateScore('breakloosediamond')">
+				<div class="flex">
+					<p>Diamonds available</p>
+					<input type="tel" placeholder="How many diamonds do you have to spend? (type the full number, ex: 20000, not &#34;20k&#34;)" data-multiplier="1" />
+				</div>
 			</section>
 
 			<section class="content" id="breakloosebuild" data-callback="breakloosebuild()">
-				<p>Break Loose - Build/Research/Train</p>
-				<p>Point Phases - 37,500 / 100,000 / 250,000 / 437,500 / 625,000</p>
-				<p>Points:</p>
-				<ul>
-					<li>Build - 2 points per 1 might from building</li>
-					<li>Research - 2 points per 1 might from building</li>
-					<li>
-						Train:
-						<dl><dt>T1 Unit</dt><dd>5 points</dd></dl>
-						<dl><dt>T2 Unit</dt><dd>10 points</dd></dl>
-						<dl><dt>T3 Unit</dt><dd>15 points</dd></dl>
-						<dl><dt>T4 Unit</dt><dd>22 points</dd></dl>
-						<dl><dt>T5 Unit</dt><dd>30 points</dd></dl>
-						<dl><dt>T6 Unit</dt><dd>40 points</dd></dl>
-						<dl><dt>T7 Unit</dt><dd>55 points</dd></dl>
-						<dl><dt>T8 Unit</dt><dd>70 points</dd></dl>
-						<dl><dt>T9 Unit</dt><dd>85 points</dd></dl>
-						<dl><dt>T10 Unit</dt><dd>110 points</dd></dl>
-						<dl><dt>T11 Unit</dt><dd>150 points</dd></dl>
-						<dl><dt>T12 Unit</dt><dd>200 points</dd></dl>
-					</li>
+				<div class="flex">
+					<p>Break Loose - Build/Research/Train</p>
+					<p>Point Phases - 37,500 / 100,000 / 250,000 / 437,500 / 625,000</p>
+					<p>Points:</p>
+					<ul>
+						<li>Build - 2 points per 1 might from building</li>
+						<li>Research - 2 points per 1 might from building</li>
+						<li>
+							Train:
+							<dl>
+								<dt>T1 Unit</dt><dd>5 points</dd>
+								<dt>T2 Unit</dt><dd>10 points</dd>
+								<dt>T3 Unit</dt><dd>15 points</dd>
+								<dt>T4 Unit</dt><dd>22 points</dd>
+								<dt>T5 Unit</dt><dd>30 points</dd>
+								<dt>T6 Unit</dt><dd>40 points</dd>
+								<dt>T7 Unit</dt><dd>55 points</dd>
+								<dt>T8 Unit</dt><dd>70 points</dd>
+								<dt>T9 Unit</dt><dd>85 points</dd>
+								<dt>T10 Unit</dt><dd>110 points</dd>
+								<dt>T11 Unit</dt><dd>150 points</dd>
+								<dt>T12 Unit</dt><dd>200 points</dd>
+							</dl>
+						</li>
+					</ul>
+				</div>
 			</section>
 	    </main>
   </div>
@@ -169,6 +297,6 @@
 	</footer>
 
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<script type="text/javascript" src="js/app.js"></script>
+	<script type="text/javascript" src="app.js"></script>
 </body>
 </html>
