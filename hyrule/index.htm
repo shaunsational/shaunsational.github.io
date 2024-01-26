@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Zelda Companion</title>
+	<link href="https://fonts.cdnfonts.com/css/the-wild-breath-of-zelda" rel="stylesheet">
+	<link href="css/hyrule.less" type="text/css" rel="stylesheet/less" />
+	<script src="js/less.min.js"></script>
+</head>
+
+<body>
+<div id="compendium">
+	<div class="category active" id="creatures"></div>
+	<div class="category" id="monsters"></div>
+	<div class="category" id="materials"></div>
+	<div class="category" id="equipment"></div>
+	<div class="category" id="treasure"></div>
+	<div class="category" id="settings">
+		<label class="toggle">
+			<input class="toggle-checkbox" type="checkbox" data-setting="hideCompleted">
+			<div class="toggle-switch"></div>
+			<span class="toggle-label" checked="checked">Hide Completed Items</span>
+		</label>
+
+		<label class="toggle">
+			<input class="toggle-checkbox" type="checkbox" data-setting="showCounts">
+			<div class="toggle-switch"></div>
+			<span class="toggle-label" checked="checked">Show Category Counts</span>
+		</label>
+
+		<label class="toggle">
+			<input class="toggle-checkbox" type="checkbox" data-setting="dlc1">
+			<div class="toggle-switch"></div>
+			<span class="toggle-label" checked="checked">Show DLC Pack 1</span>
+		</label>
+
+		<label class="toggle">
+			<input class="toggle-checkbox" type="checkbox" data-setting="dlc2">
+			<div class="toggle-switch"></div>
+			<span class="toggle-label" checked="checked">Show DLC Pack 2</span>
+		</label>
+	</div>
+
+	<div id="detail"></div>
+
+	<nav id="nav">
+		<a href="#creatures" data-cat="#creatures" title="Creatures" class="active">Creatures<i> / </i></a>
+		<a href="#monsters" data-cat="#monsters" title="Monsters">Monsters<i> / </i></a>
+		<a href="#materials" data-cat="#materials" title="Materials">Materials<i> / </i></a>
+		<a href="#equipment" data-cat="#equipment" title="Equipment">Equipment<i> / </i></a>
+		<a href="#treasure" data-cat="#treasure" title="Treasure">Treasure<i> / </i></a>
+		<a href="#settings">⚙️</a>
+	</nav>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/storage.js"></script>
+<script type="text/javascript" src="js/botw.json"></script>
+<script type="text/javascript" src="js/hyrule.js"></script>
+</body>
+</html>
