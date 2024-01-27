@@ -3,7 +3,6 @@
 let settings = localStorage.getObj('compendium.settings');
 if (settings) {
 	$.each(settings, function (key, value) {
-		console.log(key, value)
 		if (value) {
 			$(`#settings input[data-setting="${key}"]`).attr("checked", "checked");
 			$('#compendium').addClass(key);
@@ -33,7 +32,7 @@ $(function () {
 	$("html").on("click", function (e) {
 		let checks = { catLink: false, detailPane: false, inDetail: false };
 
-		if (e.target.classList.contains("detail")) { checks.catLink = true; }
+		if ($(e.target).closest(".detail").length > 0) { checks.catLink = true; }
 		if ($(e.target).closest("#detail").length > 0) { checks.inDetail = true; }
 		if (e.target.id == "detail") { checks.detailPane = true; }
 
@@ -43,7 +42,7 @@ $(function () {
 	});
 
 	$("nav a").on("click", function () {
-		changeCategory(this.href.substring(this.href.indexOf('#')));
+		changeCategory(this.href);
 	});
 
 	$(".category").on("click", "a", function () {
@@ -61,9 +60,15 @@ $(function () {
 	$("#detail").on("click", 'span.google', searchLocation);
 
 	$("#settings").on("click", 'input[type="checkbox"]', changeSetting);
+
+	if (location.href.indexOf('#') !== -1) {
+		changeCategory(location.href);
+	}
 });
 
-function changeCategory(cat) {
+function changeCategory(catHref) {
+	cat = catHref.substring(catHref.lastIndexOf('#'));
+
 	$("nav a").removeClass("active");
 	$(`a[data-cat="${cat}"]`).addClass("active");
 
@@ -73,6 +78,7 @@ function changeCategory(cat) {
 
 function loadDetail(id) {
 	let entry = compendium[id];
+	console.log(id, entry);
 	let goog = ` <span class="google" data-search="${entry.name}">Search for Exact Location</span>`;
 
 	let locations;
