@@ -15,11 +15,19 @@
 	<div class="category" id="materials"></div>
 	<div class="category" id="equipment"></div>
 	<div class="category" id="treasure"></div>
+	<div class="category" id="armor"></div>
 	<div class="category" id="settings">
+		<h1>Settings</h1>
 		<label class="toggle">
 			<input class="toggle-checkbox" type="checkbox" data-setting="hideCompleted">
 			<div class="toggle-switch"></div>
 			<span class="toggle-label" checked="checked">Hide Completed Items</span>
+		</label>
+
+		<label class="toggle">
+			<input class="toggle-checkbox" type="checkbox" data-setting="showAmiibo">
+			<div class="toggle-switch"></div>
+			<span class="toggle-label" checked="checked">Show Amiibo Items</span>
 		</label>
 
 		<label class="toggle">
@@ -39,19 +47,46 @@
 			<div class="toggle-switch"></div>
 			<span class="toggle-label" checked="checked">Show DLC Pack 2</span>
 		</label>
+
+		<div class="beta">
+			<h1>⚠️ BETA FEATURES ⚠️</h1>
+			<a data-cat="#armor" href="#armor">ARMOR CHECKLIST</a>
+		</div>
 	</div>
 
-	<div id="detail"></div>
+	<div id="detail" class="detailPane"></div>
 
-	<nav id="nav">
-		<a href="#creatures" data-cat="#creatures" title="Creatures" class="active">Creatures<i> / </i></a>
-		<a href="#monsters" data-cat="#monsters" title="Monsters">Monsters<i> / </i></a>
-		<a href="#materials" data-cat="#materials" title="Materials">Materials<i> / </i></a>
-		<a href="#equipment" data-cat="#equipment" title="Equipment">Equipment<i> / </i></a>
-		<a href="#treasure" data-cat="#treasure" title="Treasure">Treasure<i> / </i></a>
-		<a href="#settings">⚙️</a>
-	</nav>
+	<div id="armorDetail" class="detailPane">
+		<span class="close">×</span>
+		<h2 id="level" class="level"></h2>
+		<h2 class="name"></h2>
+		<p class="description"></p>
+		<h3>Special Effects</h3>
+		<p class="effects"></p>
+		<h3>Tiers</h3>
+		<!-- TODO: MAKE THIS A GRID OR SOMETHING... barf. tables. -->
+		<table width="100%" cellpadding="0" cellspacing="0">
+			<thead>
+				<tr>
+					<th>Tier</th>
+					<th>Defense Rating</th>
+					<th colspan="2">Materials</th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+	</div>
 </div>
+<nav id="nav">
+	<a href="#creatures" data-cat="#creatures" title="Creatures" class="active">Creatures<i> / </i></a>
+	<a href="#monsters" data-cat="#monsters" title="Monsters">Monsters<i> / </i></a>
+	<a href="#materials" data-cat="#materials" title="Materials">Materials<i> / </i></a>
+	<a href="#equipment" data-cat="#equipment" title="Equipment">Equipment<i> / </i></a>
+	<a href="#treasure" data-cat="#treasure" title="Treasure">Treasure<i> / </i></a>
+	<a href="#settings">⚙️</a>
+</nav>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script type="text/javascript" src="js/storage.js"></script>
 <script type="text/javascript" src="js/botw.json"></script>
