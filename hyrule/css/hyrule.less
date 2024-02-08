@@ -53,7 +53,6 @@ html {
 body {
     background: url(../images/bg.jpg) #000;
     background-attachment: fixed;
-    background-size: 1250px;
     /*
     background: url(../images/slate.png) #000;
     background-attachment: fixed;
@@ -80,6 +79,10 @@ h1, h2, h3 {
     font-family: 'The Wild Breath of Zelda', sans-serif;
     font-weight: 100;
     text-transform: uppercase;
+}
+
+.dim {
+    color:  rgba(255, 255, 255, .5);
 }
 
 #compendium {
@@ -172,6 +175,9 @@ h1, h2, h3 {
 }
 
 #armor {
+    position: relative;
+    overflow-x: hidden;
+
     & .amiibo { display: none; }
     #compendium.showAmiibo & .amiibo { display: block; }
 
@@ -180,23 +186,113 @@ h1, h2, h3 {
             display: none;
         }
         &:after {
-            content: attr(data-tier);
+            content: attr(data-needed);
+            font: normal normal 15px/0.5em tahoma;
+            font-variant: oldstyle-nums all-small-caps;
+            margin: -10px 0 0 30px;
+            position: relative;
+            top: -5px;
+
         }
+        &:hover:after { text-decoration: none; }
     }
 
-    .level {
+    .shoppingList {
+        background: linear-gradient(225deg, #999 0 95%, transparent 95% 100%);
+        backdrop-filter: blur(20px);
+        color: transparent;
+        cursor: pointer;
+        font: normal normal 1em/1.5em 'Noto Color Emoji', monospace;
+        height: 100%;
+        padding: 25px 100px;
+        position: absolute;
+        right: -90%;
+        top: -90%;
+        width: 100%;
+        transition: top .35s, right .35s;
+        z-index: 9998;
+
+        &:before {
+            background: url(../images/bg.jpg);
+            bottom: 0;
+            content: "WARNING BETA BETA feature, this will not save your inputs";
+            height: 100%;
+            left: 0;
+            opacity: .75;
+            padding: 0 10px;
+            position: absolute;
+            transform: scale(1);
+            width: 100%;
+            z-index: -1;
+        }
+
+        &.showList {
+            background: #666;
+            color: white;
+            right: 0;
+            top: 0;
+        }
+
+        & > div {
+            display: flex;
+            margin: 2px;
+
+            input[type="tel"] {
+                background: rgba(255, 255, 255, .25);
+                border-radius: 5px;
+                border-width: 0;
+                color: #FFF;
+                flex: 2;
+                font: normal normal 1em/.25em 'Noto Color Emoji', monospace;
+                text-align: center;
+                width: 30px;
+            }
+
+            .amount-remain,
+            .amount-needed {
+                margin: 0 10px;
+                width: 30px;
+                text-align: right;
+
+                &:not(.done):after {
+                    content: "x";
+                }
+            }
+            .amount-needed {
+                display: none;
+            }
+
+            .item-needed {
+                flex: 40;
+            }
+        }
     }
 }
 
 .detailPane{
-    background: #000;
+    backdrop-filter: blur(20px);
     color: #FFF;
-    height: 100%;
+    height: 120%;
     padding: 10px;
     position: fixed;
-    top: -100%;
+    top: -120%;
     width: 100%;
     transition: top .35s;
+    z-index: 9999;
+
+    &:before {
+        background: url(../images/bg.jpg);
+        background-attachment: fixed;
+        bottom: 0;
+        content: " ";
+        height: 100%;
+        left: 0;
+        opacity: .75;
+        position: absolute;
+        transform: scale(1);
+        width: 100%;
+        z-index: -1;
+    }
 
     &.focus {
         top: 0;
@@ -422,12 +518,12 @@ h1, h2, h3 {
 #nav {
     background: url(../images/bg.jpg) #000;
     background-attachment: fixed;
-    background-size: 1250px;
     left: 0;
     padding: 5px 10px 15px 10px;
     position: fixed;
     bottom: 0;
     width: 100%;
+    z-index: 9999;
 
     #compendium.showCounts + & { padding: 5px 10px 25px 10px; }
 

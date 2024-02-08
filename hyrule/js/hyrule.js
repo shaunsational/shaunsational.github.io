@@ -18,29 +18,11 @@ let showImage = ['creatures', 'monsters', 'materials', 'equipment', 'treasure'];
 $(function () {
 	let counts = {creatures: 0, monsters: 0, materials: 0, equipment: 0, treasure: 0};
 	$.each(compendium, function (index, entry) {
-		let linkClass = "detail";
-		let dlcClass = (!entry.dlc) ? '' : (entry.dlc == 'amiibo') ? ' amiibo' : ' DLC'+ entry.dlc;
-		let linkData = null;
 
-		let link = '';
-		if (entry.category == 'armor') {
-			let level = localStorage.getObj('compendium.data.HC'+ entry.id);
-			let completedClass = (level + 1 == entry.tiers.length) ? ' completed' : '';
-			link = `<div class="armorContainer${dlcClass}${completedClass}" data-id="${entry.id}"><span class="level">${checkLevel(entry.id, localStorage.getObj('compendium.data.HC'+ entry.id), entry.tiers.length)}</span>`
-			link += `<a class="${linkClass}${completedClass}" href="javascript:void(0);" data-index="${index}" data-id="${entry.id}"><span>${entry.name.toUpperCase()}</span></a></div>`;
-			linkData = {"tiers": []};
+		let link = buildCatLink(index, entry);
 
-			for(i=(level == -1 ? 0 : level); i<entry.tiers.length -1; i++){
-				linkData.tiers.push(entry.tiers[i].materials);
-			}
-		} else {
-			let img = (showImage.includes(entry.category)) ? `<img src="${entry.image}" alt="Image of ${entry.name}" />` : '';
-			let completedClass = (localStorage.getObj('compendium.data.HC'+ entry.id)) ? ' class="completed"' : "";
-			link = `<div${completedClass} data-id="${entry.id}"><a class="${linkClass}${dlcClass}" href="javascript:void(0);" data-index="${index}" data-id="${entry.id}">${img}<span>${entry.name.toUpperCase()}</span></a>`;
-		}
-		link += '</div>'
 
-		$(link).data(linkData).appendTo($(`#${entry.category}`));
+		$(link).appendTo($(`#${entry.category}`));
 		counts[entry.category]++;
 	});
 
@@ -53,7 +35,7 @@ $(function () {
 
 	$("html").on("click", closeDetail);
 
-	$(".category").on("click", "a", loadDetail);
+	$(".category").on("click", "a.detail", loadDetail);
 
 	$("#settings").on("click", 'input[type="checkbox"]', changeSetting);
 
@@ -71,10 +53,60 @@ $(function () {
 		changeCategory(this.href);
 	});
 
+	$('#armor').on('click', '.shoppingList', shoppingList)
+
+	$('#armor').on('change', '.shoppingList input[type="tel"]', countParts);
+
 	if (location.href.indexOf('#') !== -1) {
 		changeCategory(location.href);
 	}
 });
+
+function buildCatLink(index, entry) {
+	let linkClass = "detail";
+	linkClass += (!entry.dlc) ? '' : (entry.dlc == 'amiibo') ? ' amiibo' : ' DLC'+ entry.dlc;
+
+	let linkData = null;
+	let link, completedClass = '';
+
+	switch (entry.category) {
+		case 'armor':
+
+			let level = localStorage.getObj('compendium.data.HC'+ entry.id);
+			completedClass = (level + 1 == entry.tiers.length) ? ' completed' : '';
+
+			linkData = {};
+			if (!level || level + 1 < entry.tiers.length)
+			{
+				for(i=((!level || level <= 0) ? 0 : level); i<entry.tiers.length -1; i++){
+					entry.tiers[i].materials.forEach((item) => {
+						for (const [key, value] of Object.entries(item)) {
+							if(linkData.hasOwnProperty(key)) {
+								linkData[key] += value;
+							} else {
+								linkData[key] = value;
+							}
+						}
+					});
+				}
+				var b=[]; Object.keys(linkData).forEach(function(k){b.push(`"${k}": ${linkData[k]}`);});
+			}
+
+			linkData = (Object.keys(linkData).length > 0) ? `data-materials='{${b.join(', ').replaceAll("'","&rsquo;")}}'` : '';
+
+			link = `<div class="armorContainer ${linkClass}${completedClass}" data-id="${entry.id}"${linkData}>`;
+			link += `<span class="level">${checkLevel(entry.id, localStorage.getObj('compendium.data.HC'+ entry.id), entry.tiers.length)}</span>`
+			link += `<a class="${linkClass}${completedClass}" href="javascript:void(0);" data-index="${index}" data-id="${entry.id}"><span>${entry.name.toUpperCase()}</span></a>`;
+		break;
+
+		default:
+			let img = (showImage.includes(entry.category)) ? `<img src="${entry.image}" alt="Image of ${entry.name}" />` : '';
+			completedClass = (localStorage.getObj('compendium.data.HC'+ entry.id)) ? ' class="completed"' : "";
+			link = `<div${completedClass} data-id="${entry.id}"><a class="${linkClass}" href="javascript:void(0);" data-index="${index}" data-id="${entry.id}">${img}<span>${entry.name.toUpperCase()}</span></a>`;
+	}
+	link = $(link += '</div>');
+	return link;
+}
 
 function changeCategory(catHref) {
 	cat = catHref.substring(catHref.lastIndexOf('#'));
@@ -159,6 +191,15 @@ function loadArmorDetail(id) {
 	$("#armorDetail").addClass('focus');
 }
 
+function countParts() {
+	let needed = this.dataset.start - this.value;
+	if (needed < 1) {
+		$(this.parentNode).addClass('dim').find('.amount-remain').html('✓&nbsp;').addClass('done');
+	} else {
+		$(this.parentNode).removeClass('dim').find('.amount-remain').html(needed).removeClass('done');
+	}
+}
+
 function checkLevel(id, level, max) {
 	$('#armorDetail').attr('data-level', level);
 
@@ -197,6 +238,33 @@ function closeDetail(e) {
 	if (!checks.catLink && !checks.detailPane && !checks.inDetail) {
 		$(".detailPane").removeClass("focus");
 	}
+}
+
+function shoppingList() {
+	event.stopPropagation();
+
+	let list = $(this);
+		list.html('');
+
+	let remaining = {};
+	document.querySelectorAll('div.armorContainer').forEach((item) => {
+		if (!item.classList.contains('completed'))
+		{
+			let materials = JSON.parse(item.dataset.materials);
+			for (const [key, value] of Object.entries(materials)) {
+				if(remaining.hasOwnProperty(key)) {
+					remaining[key] += value;
+				} else {
+					remaining[key] = value;
+				}
+			}
+		}
+	});
+	Object.keys(remaining).forEach(function(k){
+		list.append(`<div><span class="amount-needed">${remaining[k]}</span><input type="tel" name="materials[${k.toLowerCase().replace(' ','_')}]" data-start="${remaining[k]}" /><span class="amount-remain">${remaining[k]}</span><span class="item-needed">${k}</span></div>`);// shoppingList[k]+"x "+k);
+	});
+
+	list.toggleClass('showList')
 }
 
 function searchLocation() {

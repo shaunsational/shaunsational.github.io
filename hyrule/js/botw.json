@@ -5889,10 +5889,10 @@ let compendium = [
 		"dlc": false,
 		/*"image": "https://botw-compendium.herokuapp.com/api/v3/compendium/entry/???/image",*/
 		"tiers" : [
-			{"defense": 3, "materials": [{"Amber": 2}, {"Flint": 3}]},
-			{"defense": 5, "materials": [{"Amber": 4}, {"Flint": 3}]},
-			{"defense": 8, "materials": [{"Amber": 6}, {"Star Fragment": 1}]},
-			{"defense": 12, "materials": [{"Amber": 10}, {"Star Fragment": 1}]},
+			{"defense": 3, "materials": [{"Topaz": 2}, {"Flint": 3}]},
+			{"defense": 5, "materials": [{"Topaz": 4}, {"Flint": 3}]},
+			{"defense": 8, "materials": [{"Topaz": 6}, {"Star Fragment": 1}]},
+			{"defense": 12, "materials": [{"Topaz": 10}, {"Star Fragment": 1}]},
 			{"defense": 20, "materials": null}
 		]
 	},
