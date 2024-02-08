@@ -204,7 +204,7 @@ h1, h2, h3 {
         cursor: pointer;
         font: normal normal 1em/1.5em 'Noto Color Emoji', monospace;
         height: 100%;
-        padding: 25px 100px;
+        padding: 25px 10px;
         position: absolute;
         right: -90%;
         top: -90%;
@@ -231,39 +231,39 @@ h1, h2, h3 {
             color: white;
             right: 0;
             top: 0;
-        }
 
-        & > div {
-            display: flex;
-            margin: 2px;
+            & > div {
+                display: flex;
+                margin: 2px;
 
-            input[type="tel"] {
-                background: rgba(255, 255, 255, .25);
-                border-radius: 5px;
-                border-width: 0;
-                color: #FFF;
-                flex: 2;
-                font: normal normal 1em/.25em 'Noto Color Emoji', monospace;
-                text-align: center;
-                width: 30px;
-            }
-
-            .amount-remain,
-            .amount-needed {
-                margin: 0 10px;
-                width: 30px;
-                text-align: right;
-
-                &:not(.done):after {
-                    content: "x";
+                input[type="tel"] {
+                    background: rgba(255, 255, 255, .25);
+                    border-radius: 5px;
+                    border-width: 0;
+                    color: #FFF;
+                    flex: 2;
+                    font: normal normal 1em/.25em 'Noto Color Emoji', monospace;
+                    text-align: center;
+                    width: 30px;
                 }
-            }
-            .amount-needed {
-                display: none;
-            }
 
-            .item-needed {
-                flex: 40;
+                .amount-remain,
+                .amount-needed {
+                    margin: 0 10px;
+                    width: 30px;
+                    text-align: right;
+
+                    &:not(.done):after {
+                        content: "x";
+                    }
+                }
+                .amount-needed {
+                    display: none;
+                }
+
+                .item-needed {
+                    flex: 40;
+                }
             }
         }
     }
