@@ -248,9 +248,10 @@ function shoppingList() {
 
 	let remaining = {};
 	document.querySelectorAll('div.armorContainer').forEach((item) => {
-		if (!item.classList.contains('completed'))
+		if (item.dataset.hasOwnProperty('materials') && !item.classList.contains('completed'))
 		{
 			let materials = JSON.parse(item.dataset.materials);
+			console.log(materials)
 			for (const [key, value] of Object.entries(materials)) {
 				if(remaining.hasOwnProperty(key)) {
 					remaining[key] += value;
