@@ -241,6 +241,7 @@ function closeDetail(e) {
 }
 
 function shoppingList() {
+	if (event.target.type === "tel") return;
 	event.stopPropagation();
 
 	let list = $(this);
