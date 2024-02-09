@@ -242,7 +242,7 @@ function shoppingList() {
 	if (event.target.type === "tel") return;
 	event.stopPropagation();
 
-	let list = $(this);
+	let list = $(this).find('div');
 		list.html('');
 
 	let remaining = {};
@@ -263,7 +263,7 @@ function shoppingList() {
 		list.append(`<div><span class="amount-needed">${remaining[k]}</span><input type="tel" name="materials[${k.toLowerCase().replace(' ','_')}]" data-start="${remaining[k]}" /><span class="amount-remain">${remaining[k]}</span><span class="item-needed">${k}</span></div>`);// shoppingList[k]+"x "+k);
 	});
 
-	list.toggleClass('showList')
+	$(this).toggleClass('showList')
 }
 
 function searchLocation() {
