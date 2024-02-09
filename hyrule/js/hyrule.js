@@ -53,9 +53,9 @@ $(function () {
 		changeCategory(this.href);
 	});
 
-	$('#armor').on('click', '.shoppingList', shoppingList)
+	$('.shoppingList').on('click', shoppingList)
 
-	$('#armor').on('change', '.shoppingList input[type="tel"]', countParts);
+	$('.shoppingList').on('change', 'input[type="tel"]', countParts);
 
 	if (location.href.indexOf('#') !== -1) {
 		changeCategory(location.href);
@@ -120,8 +120,7 @@ function changeCategory(catHref) {
 
 // TODO: possible to tie back button to navigation to close detail pane?
 function loadDetail(id) {
-	let cat = $(this).closest('.category')[0]
-	//console.log(cat.id, this.dataset.index); return;
+	let cat = $(this).closest('.category')[0];
 	switch (cat.id) {
 		case 'armor':
 			loadArmorDetail(this.dataset.index);
@@ -222,7 +221,6 @@ function checkLevel(id, level, max) {
 }
 function setLevel(id, level, max) {
 	event.preventDefault();
-	console.log(id, level, max)
 	localStorage.setObj('compendium.data.HC'+ id, level);
 	let cont = $(event.target).closest('.level').html(checkLevel(id, level, max));
 }
@@ -252,7 +250,6 @@ function shoppingList() {
 		if (item.dataset.hasOwnProperty('materials') && !item.classList.contains('completed'))
 		{
 			let materials = JSON.parse(item.dataset.materials);
-			console.log(materials)
 			for (const [key, value] of Object.entries(materials)) {
 				if(remaining.hasOwnProperty(key)) {
 					remaining[key] += value;
