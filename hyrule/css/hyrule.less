@@ -252,38 +252,44 @@ h1, h2, h3 {
                 writing-mode: vertical-rl;
             }
 
-            & > div div {
-                display: flex;
-                margin: 2px;
+            & > div {
+                position: relative;
+                height: 100%;
+                overflow-y: auto;
 
-                input[type="tel"] {
-                    background: rgba(255, 255, 255, .25);
-                    border-radius: 5px;
-                    border-width: 0;
-                    color: #FFF;
-                    display: inline-block;
-                    flex: 2;
-                    font: normal normal 1em/.25em 'Noto Color Emoji', monospace;
-                    text-align: center;
-                    width: 30px;
-                }
+                div {
+                    display: flex;
+                    margin: 2px;
 
-                .amount-remain,
-                .amount-needed {
-                    margin: 0 10px;
-                    width: 30px;
-                    text-align: right;
-
-                    &:not(.done):after {
-                        content: "x";
+                    input[type="tel"] {
+                        background: rgba(255, 255, 255, .25);
+                        border-radius: 5px;
+                        border-width: 0;
+                        color: #FFF;
+                        display: inline-block;
+                        flex: 2;
+                        font: normal normal 1em/.25em 'Noto Color Emoji', monospace;
+                        text-align: center;
+                        width: 30px;
                     }
-                }
-                .amount-needed {
-                    display: none;
-                }
 
-                .item-needed {
-                    flex: 40;
+                    .amount-remain,
+                    .amount-needed {
+                        margin: 0 10px;
+                        width: 30px;
+                        text-align: right;
+
+                        &:not(.done):after {
+                            content: "x";
+                        }
+                    }
+                    .amount-needed {
+                        display: none;
+                    }
+
+                    .item-needed {
+                        flex: 40;
+                    }
                 }
             }
         }
