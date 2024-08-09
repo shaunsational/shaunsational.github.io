@@ -39,12 +39,8 @@ class GuessColors {
 	}
 
 	getSolutions() {
-		const futures = new Promise((resolve, reject) => {
-			resolve(this.bruteForce(this.deepCopy(this.colorsLeft)));
-		}).then((value) => {
-			this.guesses = Array.from(this.guesses);
-		});
-		return futures;
+		this.bruteForce(this.deepCopy(this.colorsLeft));
+		this.guesses = Array.from(this.guesses);
 	}
 	
 	bruteForce(colorsLeft, _first=[]) {
@@ -91,7 +87,8 @@ class GuessColors {
 		// add permutation count to confirm
 
 		if (this.debug || confirm('If you have too many unknown fields this could potentially crash your computer/phone and require you to restart it, as the processing is handled by YOUR device.\nAs far as I know there is no harmful permanent damage that can be done to your device.\n\nDo you wish to continue?')) 
-		{			
+		{
+			let solution;
 			try {
 				// BRUTE FORCE!!!
 				if (!this.debug) {
@@ -112,19 +109,21 @@ class GuessColors {
 					$('#progress #solX').innerHTML = parseInt(guess) + 1;
 					$('#progress progress').setAttribute('value', this.guesses.length - guess);
 
-					if (this.attempt(guess).length > 0) {
+					let attempt = this.attempt(guess);
+					if (attempt.length > 0) {
 						console.log('Attempt #'+ guess +' should work if I\'ve guessed correctly, if not it will at least unlock more known colors, which you can update and attempt again.', this.guesses[guess]);
+						solution = attempt;
 						break;
 					}
-				}			
+					solution = [];
+				}
 			} catch (error) {
 				alert('I ran out of memory looking for a solution, uncover more colors and try again');
 				console.error(error);
 			}	
 			$('#progress').close();
-		}		
-		
-			
+			return solution;
+		}
 	}
 	
 	undo() {
@@ -232,8 +231,48 @@ function s2() {
 	return true;
 }
 
+function permutation(n, r) { 
+	if (n < r) return -1 
+
+	let result = n 
+	for (let i = 1; i < r; i++)  
+		result *= n - i; 
+
+	return result 
+} 
+
 let puzzle, solution, lastStep;
 function s3() {
+	let attemptToSolve = new GuessColors();
+	if (attemptToSolve.colorsLeft.length == 0) {
+		solvePuzzle();
+	} else {
+		let permutations = permutation(attemptToSolve.colorsLeft.length, attemptToSolve.colorsLeft.length);
+		if (permutations > 1000) {
+			alert('Too many possible solutions, I will probably crash your device trying to find a solution');
+		} else {
+			let solution = attemptToSolve.iterate(); 
+			if (solution.length > 0) {
+				solvePuzzle();
+				return true;
+			}
+		}
+	}
+
+	// check permutations
+		// need to check total vials against total colors, if they dont match i cant continue
+
+		//
+
+	// if > X (5,000?), issue an alert dialog telling them to find more colors first
+
+	// if < X, issue a confirm dialog telling them it may bog down or even crash their device
+
+	// if all vials are filled, no dialog, just solve (or attempt to)
+	return false;
+}
+
+function solvePuzzle() {
 	puzzle = new Puzzle(readVials(), parseInt($('#segments').value));
 	solution = puzzle.solve(puzzle);
 	console.log(solution);
