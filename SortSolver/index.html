@@ -1,0 +1,149 @@
+<!doctype html>
+<!-- TODO 
+	- show counter on color picker, dont allow more than segments to be chosen
+	- add block when not all colors are filled, to be removed when...
+-- FUTURE
+	- make function for guessing inputs when not present,
+-->
+
+<html lang="en-US">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/png" href="ico.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="styles.css" />
+		<title>Water Sort Puzzle Solver</title>
+	</head>
+	<body>
+		<section id="s1">
+			<div>
+				<div>
+				</div>
+				<div>
+					<div>
+						<p>Color<br />Segments</p>
+						<select id="segments">
+							<option value="3">3</option>
+							<option value="4" selected>4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+						</select>
+					</div>
+					<div>
+						<p>Total<br />Vials</p>
+						<select id="vials">
+							<option disabled selected value="0">??</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+							<option value="13">13</option>
+							<option value="14">14</option>
+							<option value="15" selected>15</option>
+							<option value="16">16</option>
+							<option value="17">17</option>
+							<option value="18">18</option>
+							<option value="19">19</option>
+							<option value="20">20</option>
+						</select>
+					</div>
+					<div>
+						<p>Empty<br />Vials</p>
+						<select id="empty">
+							<option value="1">1</option>
+							<option value="2" selected>2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+						</select>
+					</div>
+				</div>
+				<div>
+					<a class="nav next" href="#s2">
+						COLORS<br/>
+						<i class="fa fa-chevron-down"></i>
+					</a>
+				</div>
+			</div>
+		</section>
+		
+		<section id="s2">
+			<div>
+				<div>
+					<a class="nav prev" href="#s1">
+						<i class="fa fa-chevron-up" aria-hidden="true"></i><br/>
+						SETUP
+					</a>
+				</div>
+				
+				<div id="colors"></div>
+				
+				<div>
+					<a class="nav next" href="#s3">
+						SOLUTION<br/>
+						<i class="fa fa-chevron-down"></i>
+					</a>
+				</div>
+			</div>
+		</section>
+		
+		<section id="s3">
+			<div>
+				<div>
+					<a class="nav prev" href="#s2">
+						<i class="fa fa-chevron-up"></i><br/>
+						COLORS
+					</a>
+				</div>
+				<div id="solution"></div>
+				<div id="solution-nav">
+					<button id="prev-step" onclick="browse(-1)" disabled>&lsaquo;</button>
+					<div id="current-step"></div>
+					<button id="next-step" onclick="browse(+1)">&rsaquo;</button>
+				</div>
+			</div>
+		</section>
+		
+		<dialog id="confirm">
+			<h2><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> WAIT!</h2>
+			<p>Are you sure... like really REALLY sure?</p>
+			<div class="actions">
+				<button class="confirm">Ok</button>
+				<button class="cancel" onclick="confirmModal.close()">Cancel</button>
+			</div>
+		</dialog>
+		
+		<dialog id="progress">
+			<div>Attempting solution <span id="solX">50</span> of <span id="solutions">100</span></div>
+			<progress value="50" max="100"></progress>
+		</dialog>
+
+		<dialog id="colorPicker">
+			<!-- TODO - Add Symbols for colorblind mode -->
+			<div class="colorBlock" data-node="A"></div>
+			<div class="colorBlock" data-node="B"></div>
+			<div class="colorBlock" data-node="C"></div>
+			<div class="colorBlock" data-node="D"></div>
+			<div class="colorBlock" data-node="E"></div>
+			<div class="colorBlock" data-node="F"></div>
+			<div class="colorBlock" data-node="G"></div>
+			<div class="colorBlock" data-node="H"></div>
+			<div class="colorBlock" data-node="I"></div>
+			<div class="colorBlock" data-node="J"></div>
+			<div class="colorBlock" data-node="K"></div>
+			<div class="colorBlock" data-node="L"></div>
+			<div class="colorBlock" data-node="M"></div>
+			<div class="colorBlock" data-node="N"></div>
+			<!--<div class="colorBlock" data-node="O"></div>-->
+			<div class="colorBlock" data-node></div>
+		</dialog>
+		<script src="puzzle.js"></script>
+		<script src="script.js"></script>
+	</body>
+</html>
