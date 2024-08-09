@@ -246,6 +246,7 @@ function s3() {
 	let attemptToSolve = new GuessColors();
 	if (attemptToSolve.colorsLeft.length == 0) {
 		solvePuzzle();
+		return true;
 	} else {
 		let permutations = permutation(attemptToSolve.colorsLeft.length, attemptToSolve.colorsLeft.length);
 		if (permutations > 1000) {
