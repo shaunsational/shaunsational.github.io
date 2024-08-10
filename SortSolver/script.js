@@ -88,7 +88,7 @@ class GuessColors {
 
 		if (this.debug || confirm('If you have too many unknown fields this could potentially crash your computer/phone and require you to restart it, as the processing is handled by YOUR device.\nAs far as I know there is no harmful permanent damage that can be done to your device.\n\nDo you wish to continue?')) 
 		{
-			let solution;
+			let solution = [];
 			try {
 				// BRUTE FORCE!!!
 				if (!this.debug) {
@@ -115,7 +115,6 @@ class GuessColors {
 						solution = attempt;
 						break;
 					}
-					solution = [];
 				}
 			} catch (error) {
 				alert('I ran out of memory looking for a solution, uncover more colors and try again');
@@ -243,13 +242,16 @@ function permutation(n, r) {
 
 let puzzle, solution, lastStep;
 function s3() {
+	if (solvePuzzle() == true) {
+		return true;
+	}
+
 	let attemptToSolve = new GuessColors();
-	if (attemptToSolve.colorsLeft.length == 0) {
-		solvePuzzle();
+	if (attemptToSolve.colorsLeft.length == 0 && attemptToSolve.guesses.length > 0) {
 		return true;
 	} else {
 		let permutations = permutation(attemptToSolve.colorsLeft.length, attemptToSolve.colorsLeft.length);
-		if (permutations > 1000) {
+		if (permutations > 5040 && !confirm('there are '+ permutations +' possible answers, do you want to try? your device could crash.')) {
 			alert('Too many possible solutions, I will probably crash your device trying to find a solution');
 		} else {
 			let solution = attemptToSolve.iterate(); 
@@ -270,6 +272,7 @@ function s3() {
 	// if < X, issue a confirm dialog telling them it may bog down or even crash their device
 
 	// if all vials are filled, no dialog, just solve (or attempt to)
+	alert('No solution found, check your colors and try again');
 	return false;
 }
 
@@ -288,7 +291,6 @@ function solvePuzzle() {
 		renderStep(0);
 		return true;
 	}
-	alert('No solution found, check your colors and try again');
 	return false;
 }
 
@@ -320,7 +322,10 @@ function renderStep(step=0) {
 function browse(dir) {
 	let old = parseInt($('#current-step').getAttribute('data-step'));
 	step = old + dir;
-	renderStep(step);
+	if (step >= 0 && step <= lastStep)
+	{
+		renderStep(step);
+	}
 }
 
 let segmentCounts = {};
@@ -498,6 +503,18 @@ window.addEventListener("load", (event) => {
 		}
 		colorPicker.close();
 	});	
+
+
+	document.addEventListener('keydown', function(e) {
+		if(document.body.className == 's3') {
+			if (e.keyCode == '37') {
+				browse(-1);				
+			}
+			if (e.keyCode == '39') {
+				browse(+1);				
+			}
+		}
+	});
 	
 	var navLinks = document.getElementsByClassName('nav');
 	for (let a of navLinks) {
@@ -506,6 +523,7 @@ window.addEventListener("load", (event) => {
 			let func = this.getAttribute('href').substr(1);
 			
 			if (window[func].call(this)) {
+				$('body').className = func;
 				$('#'+ func).scrollIntoView({
 					behavior: 'smooth'
 				});
