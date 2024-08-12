@@ -43,7 +43,6 @@ let strings = {
 	}
 }
 
-let lang = "en-US";
 function getString(key, replacements=[]) {
 	let string = '';
 	if (!strings.hasOwnProperty(lang) || !strings[lang].hasOwnProperty(key)) { string = strings['en-US'][key]; }
@@ -55,14 +54,14 @@ function getString(key, replacements=[]) {
 	return string;
 }
 function setHTMLStrings() {
-	$('.txtColorSegments').innerHTML = getString("colorSegments");
-	$('.txtTotalVials').innerHTML = getString("totalVials");
-	$('.txtEmptyVials').innerHTML = getString("emptyVials");
+	$$('.txtColorSegments').forEach(el=>{el.innerHTML = getString("colorSegments")});
+	$$('.txtTotalVials').forEach(el=>{el.innerHTML = getString("totalVials")});
+	$$('.txtEmptyVials').forEach(el=>{el.innerHTML = getString("emptyVials")});
 
-	$('.txtColors').innerHTML = getString("colors");
-	$('.txtReset').innerHTML = getString("reset");
+	$$('.txtColors').forEach(el=>{el.innerHTML = getString("colors")});
+	$$('.txtReset').forEach(el=>{el.innerHTML = getString("reset")});
 	$('a[href="#s3"]').dataset.attempt = getString("attempt");
-	$('.txtSolution').innerHTML = getString("solution");
-	$('.txtBack').innerHTML = getString("back");
-	$('.txtNext').innerHTML = getString("next");
+	$$('.txtSolution').forEach(el=>{el.innerHTML = getString("solution")});
+	$$('.txtBack').forEach(el=>{el.innerHTML = getString("back")});
+	$$('.txtNext').forEach(el=>{el.innerHTML = getString("next")});
 }

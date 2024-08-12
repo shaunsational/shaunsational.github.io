@@ -11,10 +11,7 @@ Element.prototype.i18n = function(settings) {
 			if (e.target.nodeName !== "DIV") {
 				newLang = e.target.parentElement.dataset['lang']
 			}
-			el.classList.remove('open');
-			lang = newLang
-			setHTMLStrings();
-			console.log('i18n clicked', newLang)
+			$('#userFlag').className = newLang + flagcss;
 		})
 	};
 	let options = Object.assign({}, DEFAULTS, settings);
@@ -22,7 +19,8 @@ Element.prototype.i18n = function(settings) {
 	let l = document.createElement('span');
 	let f = document.createElement('span');
 	l.innerHTML = '<i class="fa fa-user-circle" aria-hidden="true"></i>';
-	f.className = 'en-US' + flagcss;
+	f.id = "userFlag";
+	f.className = options.current + flagcss;
 	d.append(l);
 	d.append(f);
 	el.append(d);
@@ -34,7 +32,8 @@ Element.prototype.i18n = function(settings) {
 		l.innerHTML = options.language[key];
 		f.className = key + flagcss;
 		d.setAttribute('data-lang', key);
-		d.onclick = options.callback;
+		d.addEventListener('click', DEFAULTS.callback);
+		d.addEventListener('click', options.callback);
 		d.append(l);
 		d.append(f);
 		el.append(d);
@@ -69,7 +68,6 @@ Element.prototype.i18n = function(settings) {
 		}
 	}
 	Object.keys(eventHandler.handlers).map(eventName => el.addEventListener(eventName, eventHandler));
-	setHTMLStrings();
 
 	return el;
 };

@@ -473,9 +473,10 @@ function fullVials() {
 	return $$('.vial:not(.empty) .segment[data-node=""]').length === 0;
 }
 
+let lang = new URLSearchParams(location.search).get('lang') || "en-US";
 window.addEventListener("load", (event) => {
 	let i18n = $('#language').i18n({
-		"language":{
+		language:{
 			"en-US": "English",
 			"it-IT": "Italiano"/*,
 			"es-ES": "Español",
@@ -483,8 +484,20 @@ window.addEventListener("load", (event) => {
 			"ja-JP": "日本語",
 			"fr-FR": "Français",
 			"ru-RU": "Русский"*/
-		}
+		},
+		current: lang,
+		callback: ((e)=>{
+			let newLang = e.target.dataset['lang'];
+			if (e.target.nodeName !== "DIV") {
+				newLang = e.target.parentElement.dataset['lang']
+			}
+			$('#language').classList.remove('open');
+			$('#language').setAttribute('data-current', newLang);
+			lang = newLang;
+			setHTMLStrings();
+		})
 	});
+	setHTMLStrings();
 	$('#s1').scrollIntoView({
 		behavior: 'smooth'
 	});
