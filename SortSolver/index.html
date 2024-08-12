@@ -1,17 +1,12 @@
 <!doctype html>
-<!-- TODO 
-	- show counter on color picker, dont allow more than segments to be chosen
-	- add block when not all colors are filled, to be removed when...
--- FUTURE
-	- make function for guessing inputs when not present,
--->
-
+<!-- TODO  show counter on color picker, dont allow more than segments to be chosen -->
 <html lang="en-US">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/png" href="ico.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="freakflags.css" />
 		<link rel="stylesheet" href="styles.css" />
 		<title>Water Sort Puzzle Solver</title>
 		<!-- Google tag (gtag.js) -->
@@ -23,15 +18,18 @@
 
 			gtag('config', 'G-XE5J6V91FY');
 		</script>
+		<script src="strings.js"></script>
 	</head>
 	<body>
+		<div id="language"></div>
+
 		<section id="s1">
 			<div>
 				<div>
 				</div>
 				<div>
 					<div>
-						<p>Color<br />Segments</p>
+						<p class="txtColorSegments"></p>
 						<select id="segments">
 							<option value="3">3</option>
 							<option value="4" selected>4</option>
@@ -40,7 +38,7 @@
 						</select>
 					</div>
 					<div>
-						<p>Total<br />Vials</p>
+						<p class="txtTotalVials"></p>
 						<select id="vials">
 							<option disabled selected value="0">??</option>
 							<option value="3">3</option>
@@ -64,7 +62,7 @@
 						</select>
 					</div>
 					<div>
-						<p>Empty<br />Vials</p>
+						<p class="txtEmptyVials"></p>
 						<select id="empty">
 							<option value="1">1</option>
 							<option value="2" selected>2</option>
@@ -75,7 +73,7 @@
 				</div>
 				<div>
 					<a class="nav next" href="#s2">
-						COLORS<br/>
+						<span class="txtColors"></span><br/>
 						<i class="fa fa-chevron-down"></i>
 					</a>
 				</div>
@@ -87,15 +85,15 @@
 				<div>
 					<a class="nav prev" href="#s1">
 						<i class="fa fa-chevron-up" aria-hidden="true"></i><br/>
-						SETUP
+						<span class="txtReset"></span>
 					</a>
 				</div>
 				
 				<div id="colors"></div>
 				
 				<div>
-					<a class="nav next" href="#s3">
-						SOLUTION<br/>
+					<a class="nav next" href="#s3" data-attempt="ATTEMPT">
+						<span class="txtSolution"></span><br/>
 						<i class="fa fa-chevron-down"></i>
 					</a>
 				</div>
@@ -107,14 +105,14 @@
 				<div>
 					<a class="nav prev" href="#s2">
 						<i class="fa fa-chevron-up"></i><br/>
-						COLORS
+						<span class="txtColors"></span>
 					</a>
 				</div>
 				<div id="solution"></div>
 				<div id="solution-nav">
-					<button id="prev-step" onclick="browse(-1)" disabled><i class="fa fa-chevron-left"></i> Back</button>
+					<button id="prev-step" onclick="browse(-1)" disabled><i class="fa fa-chevron-left"></i> <span class="txtBack"></span></button>
 					<div id="current-step"></div>
-					<button id="next-step" onclick="browse(+1)">Next <i class="fa fa-chevron-right"></i></button>
+					<button id="next-step" onclick="browse(+1)"><span class="txtNext"></span> <i class="fa fa-chevron-right"></i></button>
 				</div>
 			</div>
 		</section>
@@ -152,6 +150,7 @@
 			<!--<div class="colorBlock" data-node="O"></div>-->
 			<div class="colorBlock" data-node></div>
 		</dialog>
+		<script src="language.js"></script>
 		<script src="puzzle.js"></script>
 		<script src="script.js"></script>
 	</body>

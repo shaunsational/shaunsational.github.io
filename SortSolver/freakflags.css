@@ -1,0 +1,75 @@
+/*!*****************************************************
+
+Freak Flags, Copyright ©2024 Michael P. Cohen. Freak flags is licenced under the MIT licence.  
+
+For complete information visit: www.freakflagsprite.com 
+
+******************************************************/
+
+.fflag {
+    background-image:url(flags.png);
+    background-repeat:no-repeat;
+    background-size: 100% 900%;
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    vertical-align: middle;
+    box-sizing: content-box;
+}
+
+.fflag.ff-sm {width: 18px;height: 11px}
+.fflag.ff-md {width: 27px;height: 17px}
+.fflag.ff-lg {width: 42px;height: 27px}
+.fflag.ff-xl {width: 60px;height: 41px}
+
+/* ff-wave = waving flag look */
+.ff-wave:before {
+	content: '';
+	display: inline-block;
+	width: inherit;
+	height: inherit;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: linear-gradient(106deg, rgba(255,255,255,1) 0%, rgba(255,255,255,.2) 24%, rgba(255,255,255,0.3) 36%, rgba(0,0,0,0.15) 56%, rgba(255,255,255,0.2) 70%, rgba(0,0,0,0.2) 78%, rgba(255,255,255,0.1) 86%, rgba(0,0,0,.4) 100%)
+}
+.fflag.ff-lt {box-shadow: 0 0 0 1px rgb(220,220,220)}
+.fflag.ff-dk {box-shadow: 0 0 0 1px rgb(90,90,90)}
+
+.de-DE {background-position:center 12.5%}
+.en-US {background-position:center 25%}
+.es-MX {background-position:center 37.5%}
+.it-IT {background-position:center 50%}
+.fr-FR {background-position:center 62.5%}
+.ja-JP {background-position:center 75%}
+.ru-RU {background-position:center 87.5%}
+.es-ES {background-position:center 100%}
+
+/****************************************/
+
+#language {    
+	background: rgba(255, 255, 255, .7);
+	border-radius: 10px;
+	color: rgba(0, 0, 0, .65);
+    font-size: 1.1rem;
+    position: fixed;
+    top: 15px; right: 10px;
+    z-index: 10000;
+
+    div {
+    	align-items: center;
+    	display: flex;
+    	justify-content: right;
+    	margin: 5px 10px;
+
+    	.fflag {
+    		margin: 5px 0 5px 10px;
+    	}
+    }
+
+    > div:not(:first-child) { 
+    	cursor:pointer;
+    	display: none;
+    }
+    &.open > div:not(:first-child) { display:flex; }
+}

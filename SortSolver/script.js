@@ -86,7 +86,7 @@ class GuessColors {
 		
 		// add permutation count to confirm
 
-		if (this.debug || confirm('If you have too many unknown fields this could potentially crash your computer/phone and require you to restart it, as the processing is handled by YOUR device.\nAs far as I know there is no harmful permanent damage that can be done to your device.\n\nDo you wish to continue?')) 
+		if (this.debug || confirm(getString("manyGuesses"))) 
 		{
 			let solution = [];
 			try {
@@ -117,7 +117,7 @@ class GuessColors {
 					}
 				}
 			} catch (error) {
-				alert('I ran out of memory looking for a solution, uncover more colors and try again');
+				alert(getString("noMemory"));
 				console.error(error);
 			}	
 			$('#progress').close();
@@ -192,7 +192,7 @@ function readVials() {
 function s1() {
 	puzzle = null;
 	let vials = document.querySelectorAll('#colors .segment[data-node]:not([data-node=""])');
-	if (vials.length == 0 || confirm("Are you sure, you will lose any colors currently set?")) {
+	if (vials.length == 0 || confirm(getString("resetColors"))) {
 		$('#colors').innerHTML = '';
 		return true;
 	}
@@ -210,11 +210,11 @@ function s2() {
 		/* JUST TO DEBUG SOLVING, I DONT WANT TO INPUT THIS EVERY TIME
 		return true; 
 		/*/ 
-		alert('I need to know how many vials there are.');
+		alert(getString("noVialsSet"));
 		return false;//*/
 	}
 	if (parseInt(empty) >= parseInt(vials)) {
-		alert('There cannot be the same amount or more empty vials than there are vials.');
+		alert(getString("moreEmptyVials"));
 		return false;
 	}
 	if ($('#colors').innerHTML == '') {
@@ -243,36 +243,28 @@ function permutation(n, r) {
 let puzzle, solution, lastStep;
 function s3() {
 	if (solvePuzzle() == true) {
-		return true;
+		// ALL VIALS ARE FILLED AND A SOLUTION WAS FOUND
+		return true; 
 	}
 
 	let attemptToSolve = new GuessColors();
 	if (attemptToSolve.colorsLeft.length == 0 && attemptToSolve.guesses.length > 0) {
+		// TODO - FIGURE OUT WHAT THIS CASE IS. NO MISSING COLORS, BUT THERE IS A GUESS???
 		return true;
 	} else {
 		let permutations = permutation(attemptToSolve.colorsLeft.length, attemptToSolve.colorsLeft.length);
-		if (permutations > 5040 && !confirm('there are '+ permutations +' possible answers, do you want to try? your device could crash.')) {
-			alert('Too many possible solutions, I will probably crash your device trying to find a solution');
+		if (permutations > 5040 && !confirm(getString("drStrange", [permutations]))) {
+			alert(getString("tooManySolutions"));
 		} else {
 			let solution = attemptToSolve.iterate(); 
 			if (solution.length > 0) {
+				// NOT ALL VIALS ARE FILLED BUT THERE IS A POSSIBLE SOLUTION
 				solvePuzzle();
 				return true;
 			}
 		}
 	}
-
-	// check permutations
-		// need to check total vials against total colors, if they dont match i cant continue
-
-		//
-
-	// if > X (5,000?), issue an alert dialog telling them to find more colors first
-
-	// if < X, issue a confirm dialog telling them it may bog down or even crash their device
-
-	// if all vials are filled, no dialog, just solve (or attempt to)
-	alert('No solution found, check your colors and try again');
+	alert(getString("noSolution"));
 	return false;
 }
 
@@ -482,6 +474,17 @@ function fullVials() {
 }
 
 window.addEventListener("load", (event) => {
+	let i18n = $('#language').i18n({
+		"language":{
+			"en-US": "English",
+			"it-IT": "Italiano"/*,
+			"es-ES": "Español",
+			"de-DE": "Deutsch",
+			"ja-JP": "日本語",
+			"fr-FR": "Français",
+			"ru-RU": "Русский"*/
+		}
+	});
 	$('#s1').scrollIntoView({
 		behavior: 'smooth'
 	});
