@@ -418,7 +418,17 @@ function toPage(page) {
 	});
 }
 
-let lang = new URLSearchParams(location.search).get('lang') || "en-US";
+class StorageModule {
+	get(key, ifNull) {
+		return localStorage.getItem(key) || ifNull;
+	}
+
+	set(key, value) {
+		localStorage.setItem(key, value)
+	}
+}
+let store = new StorageModule();
+let lang = new URLSearchParams(location.search).get('lang') || store.get('lang', 'en-US');
 window.addEventListener("load", (event) => {
 	let i18n = $('#language').i18n({
 		language:{
@@ -438,6 +448,7 @@ window.addEventListener("load", (event) => {
 			}
 			$('#language').classList.remove('open');
 			$('#language').setAttribute('data-current', newLang);
+			store.set('lang', newLang);
 			lang = newLang;
 			setHTMLStrings();
 		})

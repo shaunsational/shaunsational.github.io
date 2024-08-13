@@ -87,7 +87,10 @@ section {
         font-size: 50px;
         text-align: center;
         width: 80px;
-	} 
+	}
+	> div > div {
+		align-items: end;
+	}
 }
 
 .vial {
