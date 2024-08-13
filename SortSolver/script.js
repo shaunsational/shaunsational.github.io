@@ -31,10 +31,8 @@ class GuessColors {
 		this.maxLength = remaining.length;
 		
 		if (this.debug) {
-			//this.bruteForce(this.deepCopy(this.colorsLeft));
 			this.getSolutions(this.deepCopy(this.colorsLeft));
 		}
-		console.log(this);
 		return this;
 	}
 
@@ -75,28 +73,24 @@ class GuessColors {
 				}
 				modArray = [..._second, ...modArray];
 			}
-			//this.guesses = Array.from(this.guesses);
 		}
 		return true;
 	}
 	
-	iterate(start=0) {
+	iterate(pass=false, start=0) {
 		// LOOP THROUGH EACH BRUTE FORCE ATTEMPT UNTIL PUZZLE CAN BE SOLVED
 		// this.attempt(X)
 		
 		// add permutation count to confirm
 
-		if (this.debug || confirm(getString("manyGuesses"))) 
+		if (this.debug || pass) 
 		{
 			let solution = [];
 			try {
-				// BRUTE FORCE!!!
 				if (!this.debug) {
-					//this.bruteForce(this.deepCopy(this.colorsLeft));
 					this.getSolutions(this.deepCopy(this.colorsLeft));
 				}
 
-				// modal that updates text with "Attempting guess X / GUESSES 
 				$('#progress progress').setAttribute('max', this.guesses.length);
 				$('#progress #solutions').innerHTML = this.guesses.length;
 				$('#progress').showModal();
@@ -111,13 +105,13 @@ class GuessColors {
 
 					let attempt = this.attempt(guess);
 					if (attempt.length > 0) {
-						console.log('Attempt #'+ guess +' should work if I\'ve guessed correctly, if not it will at least unlock more known colors, which you can update and attempt again.', this.guesses[guess]);
+						//console.log('Attempt #'+ guess +' should work if I\'ve guessed correctly, if not it will at least unlock more known colors, which you can update and attempt again.', this.guesses[guess]);
 						solution = attempt;
 						break;
 					}
 				}
 			} catch (error) {
-				alert(getString("noMemory"));
+				modal('alert', getString("noMemory"), getString("sorry"));
 				console.error(error);
 			}	
 			$('#progress').close();
@@ -126,7 +120,7 @@ class GuessColors {
 	}
 	
 	undo() {
-		console.log('attempt of', this.guesses.length);
+		//console.log('attempt of', this.guesses.length);
 		let unknown = $$('.segment[data-guess]');
 		unknown.forEach((el, i) => {
 			el.removeAttribute('data-guess');
@@ -152,10 +146,6 @@ class GuessColors {
 	
 	deepCopy(input) {
 		return JSON.parse(JSON.stringify(input));
-	}
-	
-	modalConfirm() {
-		
 	}
 }
 
@@ -189,11 +179,12 @@ function readVials() {
 	return vials;
 }
 
-function s1() {
+async function s1() {
 	puzzle = null;
 	let vials = document.querySelectorAll('#colors .segment[data-node]:not([data-node=""])');
-	if (vials.length == 0 || confirm(getString("resetColors"))) {
+	if (vials.length == 0 || await modal('confirm', getString("resetColors"))) {
 		$('#colors').innerHTML = '';
+		toPage('s1');
 		return true;
 	}
 	return false;
@@ -210,11 +201,11 @@ function s2() {
 		/* JUST TO DEBUG SOLVING, I DONT WANT TO INPUT THIS EVERY TIME
 		return true; 
 		/*/ 
-		alert(getString("noVialsSet"));
+		modal('alert', getString("noVialsSet"), getString('error'));
 		return false;//*/
 	}
 	if (parseInt(empty) >= parseInt(vials)) {
-		alert(getString("moreEmptyVials"));
+		modal('alert', getString("moreEmptyVials"), getString('error'));
 		return false;
 	}
 	if ($('#colors').innerHTML == '') {
@@ -227,6 +218,7 @@ function s2() {
 			createVial(segments, true); i++;
 		}
 	}
+	toPage('s2');
 	return true;
 }
 
@@ -241,38 +233,48 @@ function permutation(n, r) {
 } 
 
 let puzzle, solution, lastStep;
-function s3() {
+async function s3() {
 	if (solvePuzzle() == true) {
 		// ALL VIALS ARE FILLED AND A SOLUTION WAS FOUND
+		toPage('s3');
 		return true; 
 	}
 
 	let attemptToSolve = new GuessColors();
 	if (attemptToSolve.colorsLeft.length == 0 && attemptToSolve.guesses.length > 0) {
 		// TODO - FIGURE OUT WHAT THIS CASE IS. NO MISSING COLORS, BUT THERE IS A GUESS???
+		toPage('s3');
 		return true;
 	} else {
 		let permutations = permutation(attemptToSolve.colorsLeft.length, attemptToSolve.colorsLeft.length);
-		if (permutations > 5040 && !confirm(getString("drStrange", [permutations]))) {
-			alert(getString("tooManySolutions"));
-		} else {
-			let solution = attemptToSolve.iterate(); 
-			if (solution.length > 0) {
+		let confirm = await modal('confirm', getString("drStrange", [permutations, '<br /><br />', '<br /><br />']) );
+
+		if (permutations <= 5040 && !confirm) {
+			return false;
+		}
+		else if (permutations > 5040 && !confirm) {
+			modal('alert', getString("tooManySolutions"), getString('sorry'));
+		} 
+		else if (confirm) {
+			let solution = await attemptToSolve.iterate(true);
+			if (typeof(solution) !== 'undefined' && solution.length > 0) {
 				// NOT ALL VIALS ARE FILLED BUT THERE IS A POSSIBLE SOLUTION
 				solvePuzzle();
+				toPage('s3');
 				return true;
 			}
+		} else {
+			modal('alert', getString("noSolution"), getString('sorry'));
 		}
 	}
-	alert(getString("noSolution"));
 	return false;
 }
 
 function solvePuzzle() {
 	puzzle = new Puzzle(readVials(), parseInt($('#segments').value));
 	solution = puzzle.solve(puzzle);
-	console.log(solution);
 	if (solution.length > 1) {
+		console.log(solution);
 		if ($('#solution').innerHTML == '') {
 			let vials = $('#colors').cloneNode(true);
 			$('#solution').innerHTML = vials.innerHTML.replaceAll('vial empty', 'vial');
@@ -342,121 +344,58 @@ function updateAllBlockCounts(r) {
 	return segmentCounts[r];
 }
 
+async function modal(type, text, title) {
+	type = type || "alert";
+	title = title || getString('modalTitle');
+	text = text || getString('modalText');
+	const dialog = new modalDialog({
+		"type": type,
+		"title": title,
+		"text": text
+	});
+	let result = await dialog._result();
+	return result;
+}
 
-/*
-const image = document.querySelector("img");
-const newCatButton = document.querySelector(".js-new-cat");
+class modalDialog {
+	constructor({type, text, title}) {
+		this.dialog = $('#confirmModal');
+		this.trueButton = $('#confirmModal .actions button:first-child');
+		this.falseButton = $('#confirmModal .actions button:last-child');
+		this.__true; this.__false;
 
-newCatButton.addEventListener("click", async () => {
-  const dialog = new ConfirmDialog({
-    trueButtonText: "Yes!",
-    falseButtonText: "Noo",
-    questionText: "Are you sure you want to see yet another picture of a cat?" });
+		$('#modalText').innerHTML = text;
+		$('#modalTitle').innerHTML = title;
 
-
-  const shouldFetchNewImage = await dialog.confirm();
-  if (shouldFetchNewImage) {
-    image.src = `https://cataas.com/cat?width=400&height=300&timestamp=${Date.now()}`;
-  }
-});
-
-*/
-
-// TODO attach s1() and s3() to modal events for clearing the colors and doing the iteration if guessing
-class ConfirmDialog {
-	constructor({ questionText, trueButtonText, falseButtonText, parent }) {
-		this.questionText = questionText || "Are you sure?";
-		this.trueButtonText = trueButtonText || "Ok";
-		this.falseButtonText = falseButtonText || "Cancel";
-		this.parent = parent || document.body;
-
-		this.dialog = undefined;
-		this.trueButton = undefined;
-		this.falseButton = undefined;
-
-		this._createDialog();
-		this._appendDialog();
+		this._open(type);
 	}
 
-	confirm() {
+	_result() {
 		return new Promise((resolve, reject) => {
-			const somethingWentWrongUponCreation = !this.dialog || !this.trueButton || !this.falseButton;
-			if (somethingWentWrongUponCreation) {
-				reject('Someting went wrong when creating the modal');
-				return;
-			}
-
 			this.dialog.showModal();
 			this.falseButton.focus();
 
-			this.trueButton.addEventListener("click", () => {
-				resolve(true);
-				this._destroy();
-			});
+			this.__false = () => { resolve(false); this._close(); }
+			this.falseButton.addEventListener("click", this.__false, { once: true });
 
-			this.falseButton.addEventListener("click", () => {
-				resolve(false);
-				this._destroy();
-			});
+			this.__true = () => { resolve(true); this._close(); }
+			this.trueButton.addEventListener("click", this.__true, { once: true });
 		});
 	}
 
-	_createDialog() {
-		this.dialog = document.createElement("dialog");
-		this.dialog.classList.add("confirm-dialog");
-
-		const question = document.createElement("div");
-		question.textContent = this.questionText;
-		question.classList.add("confirm-dialog-question");
-		this.dialog.appendChild(question);
-
-		const buttonGroup = document.createElement("div");
-		buttonGroup.classList.add("confirm-dialog-button-group");
-		this.dialog.appendChild(buttonGroup);
-
-		this.falseButton = document.createElement("button");
-		this.falseButton.classList.add(
-		"confirm-dialog-button",
-		"confirm-dialog-button--false");
-
-		this.falseButton.type = "button";
-		this.falseButton.textContent = this.falseButtonText;
-		buttonGroup.appendChild(this.falseButton);
-
-		this.trueButton = document.createElement("button");
-		this.trueButton.classList.add(
-		"confirm-dialog-button",
-		"confirm-dialog-button--true");
-
-		this.trueButton.type = "button";
-		this.trueButton.textContent = this.trueButtonText;
-		buttonGroup.appendChild(this.trueButton);
+	_open(type) {
+		$('#confirmModal').classList.add(type);
+		this.dialog.showModal();
 	}
 
-	_appendDialog() {
-		this.parent.appendChild(this.dialog);
-	}
-
-	_destroy() {
-		this.parent.removeChild(this.dialog);
-		delete this;
+	_close() {
+		this.dialog.close();
+		this.trueButton.removeEventListener('click', this.__true);
+		this.falseButton.removeEventListener('click', this.__false);
+		$('#confirmModal').classList.remove('alert');
+		$('#confirmModal').classList.remove('confirm');
 	}
 }
-
-
-
-
-
-
-
-
-let confirmModal = $('#confirm');
-function promptConfirm(msg, fn) {
-	$('#confirm p').innerHTML = msg;
-	confirmModal.showModal();
-	$('#confirm .confirm').addEventListener('click', fn, { once: true });
-}
-
 
 let colorPicker = $('#colorPicker');
 let targetSegment;
@@ -471,6 +410,12 @@ delegate_event('click', document, 'dialog:not(.colorBlock)', function(e){
 
 function fullVials() {
 	return $$('.vial:not(.empty) .segment[data-node=""]').length === 0;
+}
+
+function toPage(page) {
+	$('#'+ page).scrollIntoView({
+		behavior: 'smooth'
+	});
 }
 
 let lang = new URLSearchParams(location.search).get('lang') || "en-US";
@@ -534,16 +479,10 @@ window.addEventListener("load", (event) => {
 	
 	var navLinks = document.getElementsByClassName('nav');
 	for (let a of navLinks) {
-		a.addEventListener('click', function(e) {
+		a.addEventListener('click', async function(e) {
 			e.preventDefault();
 			let func = this.getAttribute('href').substr(1);
-			
-			if (window[func].call(this)) {
-				$('body').className = func;
-				$('#'+ func).scrollIntoView({
-					behavior: 'smooth'
-				});
-			}
+			window[func].call(this);
 		});
 	}
 });

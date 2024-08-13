@@ -2,11 +2,10 @@ let strings = {
 	"en-US": {
 		"noVialsSet": "I need to know how many vials there are.",
 		"moreEmptyVials": "There cannot be the same amount or more empty vials than there are vials.",
-		"manyGuesses": "If you have too many unknown fields this could potentially crash your computer/phone and require you to restart it, as the processing is handled by YOUR device.\nAs far as I know there is no harmful permanent damage that can be done to your device.\n\nDo you wish to continue?",
 		"noMemory": "I ran out of memory looking for a solution, uncover more colors and try again.",
 		"noSolution": "No solution found, check your colors and try again.",
 		"tooManySolutions": "Too many possible solutions, I will probably crash your device trying to find a solution.",
-		"drStrange": "There are %% possible answers, do you want to try? your device could crash.",
+		"drStrange": "There are %% possible solutions and the processing to determine them happens on your device.  Your device may become unresponsive for some time, or even freeze, requiring you to restart it.%%As far as I know there is no harmful permanent damage that can be done to your device.%%Do you wish to continue?",
 		"resetColors": "Are you sure, you will lose any colors currently set?",
 		"progress": "Attempting solution %% of %%",
 
@@ -32,11 +31,10 @@ let strings = {
 	"it-IT": {
 		"noVialsSet": "Ho bisogno di sapere quante fiale ci sono.",
 		"moreEmptyVials": "Non possono esserci fiale vuote in numero uguale o superiore alle fiale presenti.",
-		"manyGuesses": "Se hai troppi campi sconosciuti, il tuo computer/telefono potrebbe bloccarsi e dovresti riavviarlo, poiché l'elaborazione è gestita dal TUO dispositivo.\nPer quanto ne so, non ci sono danni permanenti che potrebbero essere arrecati al tuo dispositivo.\n\nVuoi continuare?",
 		"noMemory": "Ho esaurito la memoria cercando una soluzione, ho scoperto altri colori e ho riprovato.",
 		"noSolution": "Nessuna soluzione trovata, controlla i colori e riprova.",
 		"tooManySolutions": "Troppe soluzioni possibili, probabilmente farò crashare il tuo dispositivo nel tentativo di trovare una soluzione.",
-		"drStrange": "Ci sono %% possibili risposte, vuoi provare? Il tuo dispositivo potrebbe bloccarsi.",
+		"drStrange": "Esistono %% soluzioni possibili e l'elaborazione per determinarle viene eseguita sul tuo dispositivo. Il tuo dispositivo potrebbe non rispondere per un po' di tempo o addirittura bloccarsi, richiedendoti di riavviarlo.%%Per quanto ne so, non è possibile arrecare danni permanenti dannosi al tuo dispositivo.%%Vuoi continuare?",
 		"resetColors": "Sei sicuro che perderai tutti i colori attualmente impostati?",
 		"progress": "Tentativo di soluzione %% di %%",
 
@@ -62,11 +60,10 @@ let strings = {
 	"es-ES": {
 		"noVialsSet": "Necesito saber cuantos viales hay.",
 		"moreEmptyVials": "No puede haber la misma cantidad o más viales vacíos que viales.",
-		"manyGuesses": "Si tiene demasiados campos desconocidos, esto podría bloquear su computadora/teléfono y requerir que lo reinicie, ya que el procesamiento lo maneja SU dispositivo.\nHasta donde yo sé, no hay daños permanentes que se le puedan causar a su dispositivo.\n\n¿Desea continuar?",
 		"noMemory": "Me quedé sin memoria buscando una solución, descubrir más colores y volver a intentarlo.",
 		"noSolution": "No se encontró solución, verifique sus colores y vuelva a intentarlo.",
 		"tooManySolutions": "Demasiadas soluciones posibles, probablemente bloquearé su dispositivo tratando de encontrar una solución.",
-		"drStrange": "Hay %% respuestas posibles, ¿quieres probar? tu dispositivo podría bloquearse.",
+		"drStrange": "Hay %% posibles soluciones y el proceso para determinarlas se lleva a cabo en tu dispositivo. Es posible que tu dispositivo no responda durante un tiempo o incluso se congele, lo que requerirá que lo reinicies.%%Hasta donde sé, no se pueden producir daños permanentes perjudiciales en tu dispositivo.%%¿Deseas continuar?",
 		"resetColors": "¿Estás seguro de que perderás los colores configurados actualmente?",
 		"progress": "Intentando solución %% de %%",
 
@@ -92,11 +89,10 @@ let strings = {
 	"de-DE": {
 		"noVialsSet": "Ich muss wissen, wie viele Fläschchen es gibt.",
 		"moreEmptyVials": "Es kann nicht gleich viele oder mehr leere Fläschchen geben, als Fläschchen vorhanden sind.",
-		"manyGuesses": "Wenn Sie zu viele unbekannte Felder haben, könnte Ihr Computer/Telefon abstürzen und ein Neustart erforderlich sein, da die Verarbeitung von IHREM Gerät übernommen wird.\nSoweit mir bekannt ist, kann Ihrem Gerät kein dauerhafter Schaden zugefügt werden.\n\nMöchten Sie fortfahren?",
 		"noMemory": "Bei der Suche nach einer Lösung ging mir der Speicher aus. Ich habe weitere Farben gefunden und es erneut versucht.",
 		"noSolution": "Keine Lösung gefunden. Überprüfen Sie Ihre Farben und versuchen Sie es erneut.",
 		"tooManySolutions": "Zu viele mögliche Lösungen. Wahrscheinlich werde ich Ihr Gerät beim Versuch, eine Lösung zu finden, zum Absturz bringen.",
-		"drStrange": "Es gibt %% mögliche Antworten. Möchten Sie es versuchen? Ihr Gerät könnte abstürzen.",
+		"drStrange": "Es gibt %% mögliche Lösungen und die Verarbeitung zu deren Ermittlung erfolgt auf Ihrem Gerät. Ihr Gerät reagiert möglicherweise für einige Zeit nicht oder friert sogar ein, sodass Sie es neu starten müssen.%%Soweit mir bekannt ist, kann Ihr Gerät nicht dauerhaft beschädigt werden.%%Möchten Sie fortfahren?",
 		"resetColors": "Sind Sie sicher, dass alle aktuell eingestellten Farben verloren gehen?",
 		"progress": "Lösungsversuch %% von %%",
 
@@ -122,11 +118,10 @@ let strings = {
 	"ja-JP": {
 		"noVialsSet": "バイアルが何本あるかを知る必要があります。",
 		"moreEmptyVials": "空のバイアルの数がバイアルの総数と同じかそれ以上になることはできません。",
-		"manyGuesses": "不明なフィールドが多すぎると、処理がお客様のデバイスによって行われるため、コンピューター/電話がクラッシュし、再起動が必要になる可能性があります。\n私の知る限り、デバイスに永久的な損傷を与えることはありません。\n\n続行しますか?",
 		"noMemory": "解決策を探してメモリが不足しました。さらに色を見つけて、もう一度試してください。",
 		"noSolution": "解決策が見つかりません。色を確認してもう一度お試しください。",
 		"tooManySolutions": "解決策が多すぎるため、解決策を見つけようとするとデバイスがクラッシュする可能性があります。",
-		"drStrange": "%% の可能な答えがあります。試してみますか?端末がクラッシュする可能性があります。",
+		"drStrange": "%% の解決策が考えられますが、それらを決定する処理はデバイス上で行われます。デバイスがしばらく応答しなくなったり、フリーズしたりして、再起動が必要になる場合があります。%%私の知る限り、デバイスに永久的な損傷を与えることはありません。%%続行しますか?",
 		"resetColors": "現在設定されている色はすべて失われますが、よろしいですか?",
 		"progress": "ソリューションを試みています %% / ##",
 
@@ -152,11 +147,10 @@ let strings = {
 	"fr-FR": {
 		"noVialsSet": "Je dois savoir combien il y a de flacons.",
 		"moreEmptyVials": "Il ne peut pas y avoir la même quantité ou plus de flacons vides qu’il n’y a de flacons au total.",
-		"manyGuesses": "Si vous avez trop de champs inconnus, cela pourrait potentiellement faire planter votre ordinateur/téléphone et vous obliger à le redémarrer, car le traitement est géré par VOTRE appareil.\nPour autant que je sache, aucun dommage permanent ne peut être causé à votre appareil.\n\nSouhaitez-vous continuer?",
 		"noMemory": "J'ai manqué de mémoire en cherchant une solution, découvrez plus de couleurs et réessayez.",
 		"noSolution": "Aucune solution trouvée, vérifiez vos couleurs et réessayez.",
 		"tooManySolutions": "Il y a trop de solutions possibles, je vais probablement faire planter votre appareil en essayant de trouver une solution.",
-		"drStrange": "Il y a %% réponses possibles, voulez-vous essayer? votre appareil pourrait planter.",
+		"drStrange": "Il existe %% solutions possibles et le traitement pour les déterminer se déroule sur votre appareil. Votre appareil peut cesser de répondre pendant un certain temps, voire se bloquer, vous obligeant à le redémarrer.%%Pour autant que je sache, aucun dommage permanent ne peut être causé à votre appareil.%%Souhaitez-vous continuer?",
 		"resetColors": "Êtes-vous sûr de perdre toutes les couleurs actuellement définies?",
 		"progress": "Tentative de résolution %% de %%",
 
@@ -182,11 +176,10 @@ let strings = {
 	"ru-RU": {
 		"noVialsSet": "Мне нужно знать, сколько там флаконов.",
 		"moreEmptyVials": "Пустых флаконов не может быть столько же или больше, сколько и флаконов.",
-		"manyGuesses": "Если у вас слишком много неизвестных полей, это может привести к зависанию вашего устройства и необходимости его перезапуска, поскольку обработка выполняется ВАШИМ устройством.\nНасколько мне известно, вашему устройству не может быть нанесено никакого вредного необратимого ущерба.\n\nВы хотите продолжить?",
 		"noMemory": "У меня закончилась память в поисках решения, найдите больше цветов и попробуйте еще раз.",
 		"noSolution": "Решение не найдено, проверьте цвета и повторите попытку.",
 		"tooManySolutions": "Слишком много возможных решений, я, вероятно, заморозлю ваше устройство, пытаясь найти решение.",
-		"drStrange": "Есть %% возможных ответов, хотите попробовать? Ваше устройство может зависнуть.",
+		"drStrange": "Существует %% возможных решений, и обработка для их определения выполняется на вашем устройстве. Ваше устройство может перестать отвечать на запросы на некоторое время или даже зависнуть, что потребует его перезапуска.%%Насколько мне известно, вашему устройству не может быть нанесено никакого вредного постоянного ущерба.%%Вы хотите продолжить?",
 		"resetColors": "Вы уверены, что все добавленные вами цвета потеряются?",
 		"progress": "Попытка решения %% из ##",
 
