@@ -117,18 +117,21 @@
 			</div>
 		</section>
 		
-		<dialog id="confirm">
-			<h2><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> WAIT!</h2>
-			<p>Are you sure... like really REALLY sure?</p>
-			<div class="actions">
-				<button class="confirm">Ok</button>
-				<button class="cancel" onclick="confirmModal.close()">Cancel</button>
+		<dialog id="confirmModal">
+			<h2><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <span id="modalTitle">WAIT!</span></h2>
+			<div class="modalBody">
+				<p id="modalText">Are you sure... like really REALLY sure?</p>
+				<div class="actions">
+					<button class="confirm">Ok</button>
+					<button class="cancel txtCancel"></button>
+				</div>
 			</div>
 		</dialog>
 		
 		<dialog id="progress">
-			<div>Attempting solution <span id="solX">50</span> of <span id="solutions">100</span></div>
+			<div class="txtProgress"></div>
 			<progress value="50" max="100"></progress>
+			<button class="cancel txtCancel"></button>
 		</dialog>
 
 		<dialog id="colorPicker">

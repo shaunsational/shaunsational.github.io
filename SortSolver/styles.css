@@ -154,8 +154,10 @@ section {
 }
 
 dialog[open] {
+	border-radius: 20px;
 	flex-wrap: wrap;
 	max-width: 300px;
+	padding: 0;
 	
 	&::backdrop {
 		background-color: rgba(0,0,0,.2);
@@ -164,10 +166,16 @@ dialog[open] {
 	
 	&#colorPicker {
 		display: flex;
+		padding: 1em;
 	}
 	
 	h2 {
-		margin:0
+		background: #EEE;
+		margin: 0;
+		padding: 15px 20px 10px 20px;
+	}
+	.modalBody {
+		padding: 0 20px 20px 20px;
 	}
 	
 	.actions {
@@ -190,6 +198,11 @@ dialog[open] {
 			background: rgba(255,100,100,.35);
 			&:hover {background: rgba(255,100,100,.65);}
 		}
+	}
+}
+dialog.alert {
+	.actions button:last-child {
+		display: none;
 	}
 }
 
@@ -224,6 +237,7 @@ dialog .colorBlock {
 }
 dialog#progress {
 	display: block;
+	padding: 1em;
 	text-align: center;
 	
 	progress {
@@ -244,6 +258,10 @@ dialog#progress {
 		}
 		&::-webkit-progress-inner-element {
 		}		
+	}
+	button {
+		display: none;
+		margin: 10px auto 0 auto;
 	}
 }
 

@@ -478,12 +478,12 @@ window.addEventListener("load", (event) => {
 	let i18n = $('#language').i18n({
 		language:{
 			"en-US": "English",
-			"it-IT": "Italiano"/*,
+			"it-IT": "Italiano",
 			"es-ES": "Español",
 			"de-DE": "Deutsch",
 			"ja-JP": "日本語",
 			"fr-FR": "Français",
-			"ru-RU": "Русский"*/
+			"ru-RU": "Русский"
 		},
 		current: lang,
 		callback: ((e)=>{
