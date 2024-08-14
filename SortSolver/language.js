@@ -1,3 +1,8 @@
+let freakflags = document.createElement('link');
+freakflags.rel = "stylesheet";
+freakflags.href = "freakflags.css";
+document.head.prepend(freakflags);
+
 Element.prototype.i18n = function(settings) {
 	let el = this;
 	el.innerHTML = '';
