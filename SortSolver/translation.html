@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Translation Check</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+	<link rel="stylesheet" href="freakflags.css" />
+	<style>
+	body {
+		background: #464E59;
+		color: #999;
+		margin: 0;
+	}
+	a {
+		color: #FFF;
+	}
+	p {
+		margin:.5em 0;
+		&.translation { color: #CCC; }
+	}
+	#translation > div {
+		margin: .5em 0 0 0;
+		padding: 5px 10px;
+		&:nth-child(even) {
+			background:rgba(0,0,0,.1);
+		}
+	}
+	</style>
+</head>
+<body>
+	<div id="language"></div>
+
+	<div id="translation"></div>
+
+	<script src="language.js"></script>
+	<script src="strings.js"></script>
+	<script type="text/javascript">	
+	const $ = document.querySelector.bind(document);
+	let lang = new URLSearchParams(location.search).get('lang') || 'it-IT';
+	window.addEventListener("load", (event) => {
+		let i18n = $('#language').i18n({
+			language:{
+				"it-IT": "Italiano",
+				"es-ES": "Español",
+				"de-DE": "Deutsch",
+				"ja-JP": "日本語",
+				"fr-FR": "Français",
+				"ru-RU": "Русский"
+			},
+			current: lang,
+			callback: ((e)=>{
+				let newLang = e.target.dataset['lang'];
+				if (e.target.nodeName !== "DIV") {
+					newLang = e.target.parentElement.dataset['lang']
+				}
+				$('#language').classList.remove('open');
+				loadStrings(newLang);
+			})
+		});
+		loadStrings(lang);
+	});
+	function loadStrings(lang) {
+		$('#translation').innerHTML = '';
+		for (var str in strings['en-US']) {
+			let d = document.createElement('div');
+			let eng = document.createElement('p');
+			eng.className = 'en-US';
+			eng.innerHTML = strings['en-US'][str];
+			d.append(eng);
+
+			let trans = document.createElement('p');
+			trans.className = 'translation '+lang;
+			trans.innerHTML = strings[lang][str] || '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> not translated yet, or I couldnt find a suitable translation';
+			d.append(trans);
+			$('#translation').append(d);
+		}
+	}
+	</script>
+</body>
+</html>

@@ -418,6 +418,40 @@ function toPage(page) {
 	});
 }
 
+function setHTMLStrings() {
+	$$('.txtColorSegments').forEach(el=>{el.innerHTML = getString("colorSegments")});
+	$$('.txtTotalVials').forEach(el=>{el.innerHTML = getString("totalVials")});
+	$$('.txtEmptyVials').forEach(el=>{el.innerHTML = getString("emptyVials")});
+	$$('.txtColors').forEach(el=>{el.innerHTML = getString("colors")});
+	$$('.txtProgress').forEach(el=>{el.innerHTML = getString("progress", ["<span id=\"solX\">50</span>", "<span id=\"solutions\">100</span>"])});
+	$$('.txtCancel').forEach(el=>{el.innerHTML = getString("cancel")});
+	$$('.txtReset').forEach(el=>{el.innerHTML = getString("reset")});
+	$$('.txtSolution').forEach(el=>{el.innerHTML = getString("solution")});
+	$$('.txtBack').forEach(el=>{el.innerHTML = getString("back")});
+	$$('.txtNext').forEach(el=>{el.innerHTML = getString("next")});
+
+	$('#thanksGDPR #txtAbout').innerHTML = getString("about");
+	$('#thanksGDPR #howToUse').innerHTML = getString("howToUse");
+	$('#thanksGDPR #hotToUseTxt').innerHTML = getString("hotToUseTxt");
+	$('#thanksGDPR #config').innerHTML = getString("config");
+	$('#thanksGDPR #configTxt').innerHTML = getString("configTxt");
+	$('#thanksGDPR #colorsTxt').innerHTML = getString("colorsTxt");
+	$('#thanksGDPR #solutionTxt').innerHTML = getString("solutionTxt");
+	$('#thanksGDPR #cookies').innerHTML = getString("cookies");
+	$('#thanksGDPR #cookieTxt').innerHTML = getString("cookieTxt");
+	$('#thanksGDPR #attrib').innerHTML = getString("attrib");
+	$('#thanksGDPR #attribTxt').innerHTML = getString("attribTxt");
+	$('#thanksGDPR #acceptButton').innerHTML = getString("acceptButton");
+	let footnote = document.createElement('p');
+	footnote.className = 'footnote';
+	footnote.innerHTML = getString("footnoteTxt");
+	$('#thanksGDPR #solutionTxt').append(footnote);
+
+	$('#modalTitle').dataset.attempt = getString("modalTitle");
+	$('#modalText').dataset.attempt = getString("modalText");
+	$('a[href="#s3"]').dataset.attempt = getString("attempt");
+}
+
 class StorageModule {
 	get(key, ifNull) {
 		return localStorage.getItem(key) || ifNull;
@@ -457,6 +491,10 @@ window.addEventListener("load", (event) => {
 	$('#s1').scrollIntoView({
 		behavior: 'smooth'
 	});
+
+	delegate_event('click', document, '.accordion', function(e){
+		e.target.classList.toggle('collapsed');
+	});
 	
 	// TODO - count colors chosen already and hide from selection? or just warn user?
 	delegate_event('click', document, '#colorPicker .colorBlock', function(e){
@@ -495,5 +533,10 @@ window.addEventListener("load", (event) => {
 			let func = this.getAttribute('href').substr(1);
 			window[func].call(this);
 		});
+	}
+
+	if (!store.get('consent')) {
+		$('#thanksGDPR').showModal();
+		$('#thanksGDPR #acceptButton').focus();
 	}
 });

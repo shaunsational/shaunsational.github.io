@@ -18,9 +18,12 @@
 
 			gtag('config', 'G-XE5J6V91FY');
 		</script>
-		<script src="strings.js"></script>
 	</head>
 	<body>
+		<div id="gdpr" onclick="$('#thanksGDPR').showModal()">
+			<i class="fa fa-info-circle" aria-hidden="true"></i>
+		</div>
+
 		<div id="language"></div>
 
 		<section id="s1">
@@ -153,7 +156,33 @@
 			<!--<div class="colorBlock" data-node="O"></div>-->
 			<div class="colorBlock" data-node></div>
 		</dialog>
+
+		<dialog id="thanksGDPR">
+			<h2><i class="fa fa-check-square-o" aria-hidden="true"></i> <span id="txtAbout"></span></h2>
+			<div class="modalBody">
+				<h4 id="cookies" class="accordion"></h4>
+				<div id ="cookieTxt"></div>
+				<h4 id="howToUse" class="accordion collapsed"></h4>
+				<div>
+					<p id="hotToUseTxt"></p>
+
+					<h5 id="config" class="accordion collapsed"></h5>
+					<div id="configTxt"></div>
+
+					<h5 class="accordion collapsed txtColors"></h5>
+					<div id="colorsTxt"></div>
+
+					<h5 class="accordion collapsed txtSolution"></h5>
+					<div id="solutionTxt"></div>
+				</div>
+				<h4 id="attrib" class="accordion collapsed"></h4>
+				<div id ="attribTxt"></div>
+			</div>
+			<button id="acceptButton" onclick="store.set('consent', true); $('#thanksGDPR').close();"></button>
+		</dialog>
+
 		<script src="language.js"></script>
+		<script src="strings.js"></script>
 		<script src="puzzle.js"></script>
 		<script src="script.js"></script>
 	</body>
