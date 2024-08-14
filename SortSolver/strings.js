@@ -126,8 +126,8 @@ let strings = {
 		"next": "PRÓXIMO"
 	},
 	"de-DE": {
-		"noVialsSet": "Ich muss wissen, wie viele Fläschchen es gibt.",
-		"moreEmptyVials": "Es kann nicht gleich viele oder mehr leere Fläschchen geben, als Fläschchen vorhanden sind.",
+		"noVialsSet": "Ich muss wissen, wie viele Reagenzgläser gibt.",
+		"moreEmptyVials": "Es kann nicht so viele oder mehr leere Reagenzgläser geben, wie Reagenzgläser zur Verfügung stehen.",
 		"noMemory": "Bei der Suche nach einer Lösung ging mir der Speicher aus. Ich habe weitere Farben gefunden und es erneut versucht.",
 		"noSolution": "Keine Lösung gefunden. Überprüfen Sie Ihre Farben und versuchen Sie es erneut.",
 		"tooManySolutions": "Zu viele mögliche Lösungen. Wahrscheinlich werde ich Ihr Gerät beim Versuch, eine Lösung zu finden, zum Absturz bringen.",
@@ -136,8 +136,8 @@ let strings = {
 		"progress": "Lösungsversuch %% von %%",
 
 		"colorSegments": "Farbsegmente",
-		"totalVials": "Gesamtmenge<br />Fläschchen",
-		"emptyVials": "Leere<br />Fläschchen",
+		"totalVials": "Gesamtmenge<br />Reagenzgläser",
+		"emptyVials": "Leere<br />Reagenzgläser",
 
 		"modalTitle": "WARTEN!",
 		"modalText": "Möchten Sie diese Aktion wirklich abschließen?",
@@ -150,7 +150,7 @@ let strings = {
 		"howToUse": "WIE MAN SIE BENUTZT",
 		"hotToUseTxt": "Dieses Tool analysiert Ihren Fortschritt in den Wassersortierspielen und versucht, Ihnen eine Schritt-für-Schritt-Lösung zu bieten. Es besteht aus drei Schritten:",
 		"config": "KONFIGURATION",
-		"configTxt": "Stellen Sie die Fläschchen so ein, wie sie in Ihrem Spiel vorkommen: Wählen Sie die Segmente für die Anzahl der in jedem Fläschchen vorkommenden Farbabschnitte, die Gesamtzahl der Fläschchen (einschließlich der leeren) und schließlich die Anzahl der leeren Fläschchen aus.",
+		"configTxt": "Stellen Sie die Reagenzgläser so ein, wie sie in Ihrem Spiel vorkommen: Wählen Sie die Segmente für die Anzahl der in jedem Reagenzglas vorkommenden Farbabschnitte, die Gesamtzahl der Reagenzgläser (einschließlich der leeren) und schließlich die Anzahl der leeren Reagenzgläser aus.",
 		"colorsTxt": "Klicken Sie auf jedes Segment. Ein Popup wird angezeigt, in dem Sie eine Farbe für dieses Segment auswählen können. Wenn Sie die falsche Farbe auswählen, können Sie sie erneut auswählen oder die Farbe löschen.",
 		"solutionTxt": "Wenn Sie nicht alle Farben kennen, wird versucht, das Rätsel für Sie zu lösen. <sup><strong>&dagger;</strong></sup> Beachten Sie, dass dies nur eine Vermutung und keine garantierte Lösung ist. Wenn Sie alle Farben kennen und es eine gültige Lösung gibt, wird eine Lösung angezeigt, in der Sie vor- und zurückblättern können, um das Rätsel zu lösen (wenn Sie einen Computer verwenden, können Sie auch die Pfeiltasten links/rechts verwenden).",
 		"footnoteTxt": "<strong>&dagger;</strong> <em>Da die Verarbeitung auf Ihrem Gerät erfolgt, wird nur versucht, 7 unbekannte Farben oder weniger zu lösen.<br />Als Referenz: Die Berechnung der Movesets jeder Lösung für 7 unbekannte Farben hat ca 277.200 Züge, um zu sehen, ob es eine Lösung gibt, dafür hat mein Computer etwa 5 Minuten gebraucht. In Zukunft möchte ich meinen Code und das Projekt optimieren und werde die maximalen Versuche je nach Optimierung erneut prüfen.</em>",
