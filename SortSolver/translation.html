@@ -72,7 +72,7 @@
 
 			let trans = document.createElement('p');
 			trans.className = 'translation '+lang;
-			trans.innerHTML = strings[lang][str] || '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> not translated yet, or I couldnt find a suitable translation';
+			trans.innerHTML = strings[lang][str] || '<span style="color:#F66"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> not translated yet, or I couldnt find a suitable translation</span>';
 			d.append(trans);
 			$('#translation').append(d);
 		}
