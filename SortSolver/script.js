@@ -234,6 +234,7 @@ function permutation(n, r) {
 
 let puzzle, solution, lastStep;
 async function s3() {
+	saveProgress();
 	if (solvePuzzle() == true) {
 		// ALL VIALS ARE FILLED AND A SOLUTION WAS FOUND
 		toPage('s3');
@@ -468,6 +469,7 @@ class StorageModule {
 let store = new StorageModule();
 let lang = new URLSearchParams(location.search).get('lang') || store.get('lang', 'en-US');
 window.addEventListener("load", (event) => {
+	restoreProgress();
 	let i18n = $('#language').i18n({
 		language:{
 			"en-US": "English",
@@ -544,3 +546,35 @@ window.addEventListener("load", (event) => {
 		$('#thanksGDPR #acceptButton').focus();
 	}
 });
+
+function saveProgress() {
+	let progress = {
+		"segments": $('#segments').value, 
+		"vials": $('#vials').value, 
+		"empty": $('#empty').value, 
+		"colors": readVials()
+	};
+	store.set('progress', JSON.stringify(progress));
+	console.log(progress);
+}
+
+async function restoreProgress() {
+	let progress = store.get('progress');
+	if (typeof(progress) !== 'undefined' && await modal('confirm', getString("restoreProgress"))) {
+		progress = JSON.parse(progress);
+		$$('#vials option').forEach(el=>{el.removeAttribute('selected')});
+		$('#segments').value = progress.segments;
+		$('#vials').value = progress.vials;
+		$('#empty').value = progress.empty;
+
+		progress.colors.forEach(v=>{
+			let key = v.join('').padStart(4, ' ');
+			let vial = renderVial(key);
+			if (key == '    ') {
+				vial.classList.add('empty');
+			}
+			$('#colors').append(vial);
+		});
+		toPage('s2');
+	}
+}

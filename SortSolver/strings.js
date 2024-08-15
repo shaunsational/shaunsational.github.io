@@ -34,6 +34,8 @@ let strings = {
 		"attribTxt": "<ul><li>Ruslan Kurdyumov - for his base starting point <a href=\"https://github.com/rkurdyumov/water_sort_solver\" target=\"_new\">water_sort_solver</a></li><li>Michael P. Cohen - for the <a href=\"https://www.freakflagsprite.com/\" target=\"_new\">images</a> used in language selection.</li><li><a href=\"https://fontawesome.com/\" target=\"_new\">FontAwesome</a> - for the icons used in this page</li></ul>",
 		"acceptButton": "Accept and Close",
 
+		"restoreProgress": "It looks like you made a previous attempt, would you like to restore it?",
+
 		"colors": "COLORS",
 		"reset": "RESET",
 		"attempt": "ATTEMPT",
@@ -75,6 +77,8 @@ let strings = {
 		"attrib": "COPYRIGHT SUI CONTENUTI/CODICI",
 		"attribTxt": "<ul><li>Ruslan Kurdyumov - per il suo punto di partenza di base <a href=\"https://github.com/rkurdyumov/water_sort_solver\" target=\"_new\">water_sort_solver</a></li><li>Michael P. Cohen - per le <a href=\"https://www.freakflagsprite.com/\" target=\"_new\">immagini</a> utilizzate nella selezione della lingua.</li><li><a href=\"https://fontawesome.com/\" target=\"_new\">FontAwesome</a> - per le icone utilizzate in questa pagina</li></ul>",
 		"acceptButton": "Accetta e chiudi",
+
+		"restoreProgress": "Sembra che tu abbia fatto un tentativo precedente. Vuoi ripristinarlo?",
 
 		"colors": "COLORI",
 		"reset": "RESET",
@@ -118,6 +122,8 @@ let strings = {
 		"attribTxt": "<ul><li>Ruslan Kurdyumov: por su punto de partida básico <a href=\"https://github.com/rkurdyumov/water_sort_solver\" target=\"_new\">water_sort_solver</a></li><li>Michael P. Cohen: por las <a href=\"https://www.freakflagsprite.com/\" target=\"_new\">imágenes</a> utilizadas en la selección del idioma.</li><li><a href=\"https://fontawesome.com/\" target=\"_new\">FontAwesome</a>: por los íconos utilizados en esta página</li></ul>",
 		"acceptButton": "Aceptar y cerrar",
 
+		"restoreProgress": "Parece que hiciste un intento anterior, ¿te gustaría restaurarlo?",
+
 		"colors": "COLORES",
 		"reset": "REINICIAR",
 		"attempt": "INTENTAR",
@@ -159,6 +165,8 @@ let strings = {
 		"attrib": "URHEBERRECHTE FÜR INHALT/CODE",
 		"attribTxt": "<ul><li>Ruslan Kurdyumov – für seinen Basis-Ausgangspunkt <a href=\"https://github.com/rkurdyumov/water_sort_solver\" target=\"_new\">water_sort_solver</a></li><li>Michael P. Cohen – für die <a href=\"https://www.freakflagsprite.com/\" target=\"_new\">Bilder</a>, die bei der Sprachauswahl verwendet werden.</li><li><a href=\"https://fontawesome.com/\" target=\"_new\">FontAwesome</a> – für die auf dieser Seite verwendeten Symbole</li></ul>",
 		"acceptButton": "Akzeptieren und schließen",
+
+		"restoreProgress": "Anscheinend haben Sie einen früheren Versuch unternommen. Möchten Sie ihn wiederherstellen?",
 
 		"colors": "FARBEN",
 		"reset": "ZURÜCKSETZEN",
@@ -202,6 +210,8 @@ let strings = {
 		"attribTxt": "<ul><li>Ruslan Kurdyumov - ベースとなる出発点 <a href=\"https://github.com/rkurdyumov/water_sort_solver\" target=\"_new\">water_sort_solver</a></li><li>Michael P. Cohen - 言語の選択に使用される<a href=\"https://www.freakflagsprite.com/\" target=\"_new\">画像</a>について。</li><li><a href=\"https://fontawesome.com/\" target=\"_new\">FontAwesome</a> - このページで使用されているアイコン用</li></ul>",
 		"acceptButton": "承諾して閉じる",
 
+		"restoreProgress": "以前に試行が行われたようですが、復元しますか?",
+
 		"colors": "カラーズ",
 		"reset": "リセット",
 		"attempt": "試み",
@@ -244,6 +254,8 @@ let strings = {
 		"attribTxt": "<ul><li>Ruslan Kurdyumov - pour son point de départ de base <a href=\"https://github.com/rkurdyumov/water_sort_solver\" target=\"_new\">water_sort_solver</a></li><li>Michael P. Cohen - pour les <a href=\"https://www.freakflagsprite.com/\" target=\"_new\">images</a> utilisées dans la sélection de la langue.</li><li><a href=\"https://fontawesome.com/\" target=\"_new\">FontAwesome</a> - pour les icônes utilisées dans cette page</li></ul>",
 		"acceptButton": "Accepter et fermer",
 
+		"restoreProgress": "Il semble que vous ayez fait une tentative précédente, souhaitez-vous la restaurer?",
+
 		"colors": "COULEURS",
 		"reset": "RÉINITIALISER",
 		"attempt": "TENTATIVE",
@@ -285,6 +297,8 @@ let strings = {
 		"attrib": "СОДЕРЖИМОЕ/КОД АВТОРСКИЕ ПРАВА",
 		"attribTxt": "<ul><li>Ruslan Kurdyumov - за его базовую отправную точку <a href=\"https://github.com/rkurdyumov/water_sort_solver\" target=\"_new\">water_sort_solver</a></li><li>Michael P. Cohen - за <a href=\"https://www.freakflagsprite.com/\" target=\"_new\">изображения</a>, используемые при выборе языка.</li><li><a href=\"https://fontawesome.com/\" target=\"_new\">FontAwesome</a> - за значки, используемые на этой странице</li></ul>",
 		"acceptButton": "Принять и закрыть",
+
+		"restoreProgress": "Похоже, вы предприняли предыдущую попытку. Хотите восстановить ее?",
 
 		"colors": "ЦВЕТА",
 		"reset": "СБРОС",
