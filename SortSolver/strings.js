@@ -138,7 +138,7 @@ let strings = {
 		"noSolution": "Keine Lösung gefunden. Überprüfen Sie Ihre Farben und versuchen Sie es erneut.",
 		"tooManySolutions": "Zu viele mögliche Lösungen. Wahrscheinlich werde ich Ihr Gerät beim Versuch, eine Lösung zu finden, zum Absturz bringen.",
 		"drStrange": "Es gibt %% mögliche Lösungen und die Verarbeitung zu deren Ermittlung erfolgt auf Ihrem Gerät. Ihr Gerät reagiert möglicherweise für einige Zeit nicht oder friert sogar ein, sodass Sie es neu starten müssen.%%Soweit mir bekannt ist, kann Ihr Gerät nicht dauerhaft beschädigt werden.%%Möchten Sie fortfahren?",
-		"resetColors": "Sind Sie sicher?, Alle ihre aktuell eingestellten Farben werden zurück gesetzt.",
+		"resetColors": "Sind Sie sicher? Alle ihre aktuell eingestellten Farben werden zurück gesetzt.",
 		"progress": "Lösungsversuch %% von %%",
 
 		"colorSegments": "Farbsegmente",
