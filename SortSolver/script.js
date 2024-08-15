@@ -430,6 +430,10 @@ function setHTMLStrings() {
 	$$('.txtBack').forEach(el=>{el.innerHTML = getString("back")});
 	$$('.txtNext').forEach(el=>{el.innerHTML = getString("next")});
 
+	$('#segments').setAttribute('title', getString("colorSegments").replace('<br />', ' '));
+	$('#vials').setAttribute('title', getString("totalVials").replace('<br />', ' '));
+	$('#empty').setAttribute('title', getString("emptyVials").replace('<br />', ' '));
+
 	$('#thanksGDPR #txtAbout').innerHTML = getString("about");
 	$('#thanksGDPR #howToUse').innerHTML = getString("howToUse");
 	$('#thanksGDPR #hotToUseTxt').innerHTML = getString("hotToUseTxt");
