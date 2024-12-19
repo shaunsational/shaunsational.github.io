@@ -2,71 +2,70 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style type="text/css">
-		@import url('https://fonts.googleapis.com/css2?family=Droid+Sans&family=Titillium+Web&display=swap');
+		@import url('https://fonts.googleapis.com/css2?family=Dr+Sugiyama&family=Titillium+Web&display=swap');
 		body {
 			background: rgba(0, 0, 0, .75);
+			opacity: 0;
+			transition: opacity 1s ease-in-out 2s;
 		}
 		#banner {
 			position: relative;
-			height: 80px;
-			width: 1400px;
-			margin: auto;
+			margin: 40px 200px 0 200px;
+			box-sizing: border-box;
 
 			display: grid;
-			grid-template-columns: 60px 1fr;
-			grid-template-rows: 32px 25px;
-			gap: 3px 10px;			
-
-			#instagram {
-				background-image: url('ig_logo.webp');
-				background-size: contain;
-				border-radius: 15px;
-				display: inline-block;
-				width: 60px;
-				height: 60px;
-				top: 10px;
-				left: 10px;
-
-				grid-row: span 2 / span 2;
-			}
-
-			#artist, #track {
-				align-self: center;
-				line-height: .8em;
-			}
-
-			#artist {
-				color: orange;
-				font-family: "Titillium Web", serif;
-				font-weight: 400;
-				font-style: normal;
-				font-size: 30px;
-
-				grid-column: span 4 / span 4;
-
-				&:before {
-					content: '@';
-				}
-			}
-
-			#track {
-				color: white;
-				font-family: "Droid Sans", serif;
-				font-weight: 400;
-				font-style: normal;
-				font-size: 20px;
-
-				grid-column: span 4 / span 4;
-				grid-column-start: 2;
-				grid-row-start: 2;
-
-				&:before {
-					content: '♫ ';
-				}
-			}
+			grid-template-columns: 80px 1fr;
+			grid-template-rows: 40px 37px;
+			gap: 3px 15px;
 		}
+
+		#instagram {
+			background-image: url('ig_logo.webp');
+			background-size: contain;
+			border-radius: 15px;
+			display: inline-block;
+			width: 80px;
+			height: 80px;
+			top: 10px;
+			left: 10px;
+
+			grid-row: span 2 / span 2;
+		}
+
+		#artist, #track {
+			align-self: center;
+			line-height: .8em;
+		}
+
+		#artist {
+			color: orange;
+			font-family: "Titillium Web", sans-serif;
+			font-weight: 400;
+			font-style: normal;
+			font-size: 38px;
+
+			grid-column: span 4 / span 4;
+		}
+			#artist:before {
+				content: '@';
+			}
+
+		#track {
+			color: white;
+			padding-left: 7px;
+			font-family: "Droid Sans", sans-serif;
+			font-weight: bold;
+			font-style: normal;
+			font-size: 28px;
+
+			grid-column: span 4 / span 4;
+			grid-column-start: 2;
+			grid-row-start: 2;
+		}
+			#track:before {
+				content: '♫ ';
+			}
 	</style>
 	<title>Banner</title>
 </head>
@@ -85,7 +84,8 @@
 	if (artist !== null) { 
 		document.querySelector('#artist').innerHTML = artist;
 		if (track !== null) { 
-			document.querySelector('#track').innerHTML = track;
+			document.querySelector('#track').innerHTML = track; 
+			document.querySelector('body').style.opacity = 1;
 		}
 	}
 </script>
