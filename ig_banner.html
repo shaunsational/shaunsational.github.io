@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://fonts.googleapis.com/css2?family=Droid+Sans&family=Titillium+Web&display=swap" rel="stylesheet">
 	<style type="text/css">
-		html {
+		body {
 			background: rgba(0, 0, 0, .75);
 			opacity: 0;
 			transition: opacity 1s ease-in-out 2s;;
@@ -87,7 +87,7 @@
 		document.querySelector('#artist').innerHTML = artist;
 		if (track !== null) { 
 			document.querySelector('#track').innerHTML = track; 
-			document.querySelector('html').style.opacity = 1;
+			document.querySelector('body').style.opacity = 1;
 		}
 	}
 </script>
